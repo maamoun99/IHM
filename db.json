@@ -1,0 +1,311 @@
+{
+  "posts": [
+    {
+      "id": "5577",
+      "title": "musicien",
+      "content": "nji na3zeflek ta7t rasek 7ata tor9d",
+      "imageUrl": "",
+      "price": 10,
+      "userId": "fagous"
+    },
+    {
+      "id": "8715",
+      "title": "dazzez",
+      "content": "ndezhoulek wa9t ma t7eb",
+      "imageUrl": "",
+      "price": 20,
+      "userId": "1b53",
+      "username": "fakousa"
+    },
+    {
+      "id": "3413",
+      "title": "midou",
+      "content": "enno5",
+      "imageUrl": "",
+      "price": 20,
+      "userId": "1b53",
+      "username": "fakousa"
+    },
+    {
+      "id": "5850",
+      "title": "Bsekli",
+      "content": "installation gaz lel moutourat ",
+      "imageUrl": "",
+      "price": 20,
+      "userId": "bbdefaf3-2208-4dff-bc22-74dce1cca6ea",
+      "username": "iheb"
+    },
+    {
+      "id": "4083",
+      "title": "tit",
+      "content": "nseb barcha",
+      "imageUrl": "",
+      "price": 3,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous"
+    },
+    {
+      "id": "1306",
+      "title": "nik",
+      "content": "bouk",
+      "imageUrl": [],
+      "price": 22,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous"
+    },
+    {
+      "id": "2871",
+      "title": "bv",
+      "content": "hh",
+      "imageUrl": [],
+      "price": 2,
+      "userId": "1b53",
+      "username": "fakousa"
+    },
+    {
+      "id": "9090",
+      "title": "mm",
+      "content": "mmù",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525437/eixqbdtyxwxk8w8kz3d6.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525453/hv7zprcehmacxg5xxhq4.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525467/r8n2hkzz03b2baozhv4n.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525483/nh7oppq3wx2pye6csbfy.jpg"
+      ],
+      "price": 1,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous"
+    },
+    {
+      "id": "7562",
+      "title": "fsdfsd",
+      "content": "ggere",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712876167/sez5jljt96hazre0zkq1.png"
+      ],
+      "price": 20,
+      "userId": "1c282b51-5956-41c2-9e39-7ae5ecbf87a3",
+      "username": "mahmoud"
+    },
+    {
+      "id": 6456,
+      "title": "zbaybi",
+      "content": "7aggar",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712958516/gucwnjhswpcrpnrjoc0f.jpg"
+      ],
+      "price": 20,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous",
+      "categoryId": "3352",
+      "categoryName": ""
+    }
+  ],
+  "users": [
+    {
+      "id": "1b53",
+      "username": "fakousa",
+      "email": "fak@gmai.com",
+      "password": "159",
+      "role": "prestateur"
+    },
+    {
+      "id": "ca36",
+      "username": "kiki",
+      "email": "ffa@gmail.com",
+      "password": "123",
+      "role": "client",
+      "phone": "55323216",
+      "status": true
+    },
+    {
+      "id": "08ed",
+      "username": "",
+      "email": "",
+      "password": "",
+      "role": "client",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous",
+      "email": "fk@gmail.com",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "123",
+      "status": true
+    },
+    {
+      "id": "f0d82b22-ef68-4103-b844-4743f16c9f66",
+      "username": "nounou1",
+      "email": "niggar@gmail",
+      "password": "123",
+      "role": "client",
+      "phone": "25252525",
+      "status": true
+    },
+    {
+      "id": "bbdefaf3-2208-4dff-bc22-74dce1cca6ea",
+      "username": "iheb",
+      "email": "ihbes@gmail.coum",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "55323216",
+      "status": true
+    },
+    {
+      "id": "1c282b51-5956-41c2-9e39-7ae5ecbf87a3",
+      "username": "mahmoud",
+      "email": "mah@gmail.com",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "55323216",
+      "status": true
+    }
+  ],
+  "category": [
+    {
+      "id": 3352,
+      "name": "Animals",
+      "sous_categorie": "bhayem"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "79ac",
+      "clientId": "kiki",
+      "username": "fakousa",
+      "date": "5402-02-05",
+      "time": "04:25",
+      "message": "fgyhjgggg"
+    },
+    {
+      "id": "32d0",
+      "clientId": "kiki",
+      "username": "fakousa",
+      "date": "5521-05-05",
+      "time": "15:05",
+      "message": "lamiya"
+    },
+    {
+      "id": "d12a",
+      "clientId": "kiki",
+      "username": "fakousa",
+      "date": "5452-09-09",
+      "time": "02:02",
+      "message": "qfdee"
+    },
+    {
+      "id": "ebe1",
+      "clientId": "kiki",
+      "username": "fagous",
+      "date": "2024-04-09",
+      "time": "15:30",
+      "message": "صباح النور والأمل نسأل الله أن يتقبل صيامكم وصيامنا كما نتمنى لكم عيد سعيد مبارك ينعاد عليكم بالفرحة وتيسير الأمور "
+    },
+    {
+      "acceptation": false,
+      "id": "49d3"
+    },
+    {
+      "id": "d9d2",
+      "clientId": "fagous",
+      "username": "fakousa",
+      "date": "5510-05-06",
+      "time": "08:08",
+      "timeEnd": "09:09",
+      "message": "maladie"
+    },
+    {
+      "id": "fb30",
+      "clientId": "fagous",
+      "username": "qsd",
+      "date": "0500-08-05",
+      "time": "05:06",
+      "timeEnd": "05:59",
+      "message": "qsdq\n"
+    },
+    {
+      "id": "bb14",
+      "clientId": "kiki",
+      "username": "jkojj",
+      "date": "2024-12-01",
+      "time": "23:58",
+      "timeEnd": "23:59",
+      "message": "44 nikeik"
+    },
+    {
+      "id": "3b33",
+      "clientId": "kiki",
+      "username": "mahmoud",
+      "date": "2022-02-02",
+      "time": "23:25",
+      "timeEnd": "04:02",
+      "message": "mou7awla fel kheffa"
+    },
+    {
+      "id": "28d3",
+      "clientId": "kiki",
+      "username": "mahmoud",
+      "date": "0245-07-05",
+      "time": "04:45",
+      "timeEnd": "04:52",
+      "message": "ezr"
+    },
+    {
+      "id": "b91b",
+      "clientId": "kiki",
+      "username": "fakousa",
+      "date": "2444-08-08",
+      "time": "04:22",
+      "timeEnd": "23:02",
+      "message": "45455"
+    },
+    {
+      "id": "1ad0",
+      "clientId": "kiki",
+      "username": "mahmoud",
+      "date": "2222-08-08",
+      "time": "05:03",
+      "timeEnd": "23:22",
+      "message": "gfsqq",
+      "confirmed": false,
+      "rejected": false
+    },
+    {
+      "acceptation": true,
+      "id": "15a9"
+    },
+    {
+      "acceptation": true,
+      "id": "cfce"
+    },
+    {
+      "acceptation": false,
+      "id": "4c46"
+    },
+    {
+      "acceptation": true,
+      "id": "3f1d"
+    },
+    {
+      "acceptation": true,
+      "id": "4b2b"
+    },
+    {
+      "acceptation": true,
+      "id": "9672"
+    },
+    {
+      "acceptation": true,
+      "clientId": "kiki",
+      "id": "cb24"
+    },
+    {
+      "acceptation": true,
+      "clientId": "kiki",
+      "id": "0ae0"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<div class="container">
+    <h2 class="title">Edit Post</h2>
+    <form class="form" (ngSubmit)="updatePost()">
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title" class="label">Title</label>
+            <input type="text" id="title" name="title" [(ngModel)]="post.title" class="input" required>
+        </div>
+
+        <!-- Content -->
+        <div class="form-group">
+            <label for="content" class="label">Content</label>
+            <textarea id="content" name="content" [(ngModel)]="post.content" class="input" required></textarea>
+        </div>
+
+        <!-- Image URL -->
+        <div class="form-group">
+            <label for="imageUrl" class="label">Image URL</label>
+            <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="post.imageUrl" class="input" required>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label for="price" class="label">Price</label>
+            <input type="number" id="price" name="price" [(ngModel)]="post.price" class="input" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="button">Update Post</button>
+    </form>
+</div>

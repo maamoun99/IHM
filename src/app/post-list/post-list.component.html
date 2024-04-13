@@ -1,0 +1,35 @@
+<div class="container">
+    <h2 class="title" [class.visible]="showTitle">Post List</h2>
+
+    <button *ngIf="(userRole$ | async) === 'prestateur'" (click)="createNewPost()">Create Post</button>
+
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title...">
+    </div>
+
+    <div *ngIf="filterPosts().length === 0" class="empty-message">
+        No posts available.
+    </div>
+
+    <div class="post-container" *ngIf="filterPosts().length > 0">
+        <div class="post-item" *ngFor="let post of filterPosts()" (click)="viewPost(post.id)">
+            <div class="post-details">
+                <h3 class="post-title">{{ post.title }}</h3>
+                <p class="post-content">{{ post.content | slice:0:100 }}...</p>
+                <p class="post-price">Price: {{ post.price.toFixed(2) }}DT</p>
+                <p class="card-text"><strong>Posted by:</strong> {{ post.username }}</p>
+                <p class="post-category"><strong>Category:</strong> {{ post.categoryName }}</p>
+
+                <!-- Display only the first image -->
+                <img *ngIf="post.imageUrl.length > 0" [src]="post.imageUrl[0]" alt="Post Image" class="post-image">
+            </div>
+            <div class="post-actions">
+                <button *ngIf="(userRole$ | async) === 'prestateur' || (userRole$ | async) === 'admin'"
+                    (click)="deletePost(post.id)" class="delete-button">Delete</button>
+                <button *ngIf="(userRole$ | async) === 'prestateur'" (click)="modifyPost(post)"
+                    class="modify-button">Modify</button>
+                <button class="orange-button" (click)="goToReservationForm()">Make a Reservation</button>
+            </div>
+        </div>
+    </div>
+</div>

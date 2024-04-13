@@ -1,0 +1,39 @@
+<h2>Create Post</h2>
+<form (submit)="onSubmit()" enctype="multipart/form-data">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="newPost.title" required>
+    </div>
+    <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" [(ngModel)]="newPost.content" required></textarea>
+    </div>
+    <div class="col-md-12 form-group">
+        <label>Images</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" accept="image/*" multiple
+                formControlName="image" (change)="previewImages($event)">
+            <label class="custom-file-label" for="customFile">Choisir des images</label>
+        </div>
+
+        <!-- Utilisez *ngIf pour afficher la zone de prévisualisation uniquement si des images ont été sélectionnées -->
+        <div class="image-container" *ngIf="imageUrlList.length > 0">
+            <!-- Utilisez *ngFor pour afficher toutes les images prévisualisées -->
+            <ng-container *ngFor="let imageUrl of imageUrlList; let i = index">
+                <img [src]="imageUrl" alt="Image Preview" class="preview-image"
+                    style="width: 80px; height: auto; margin-right: 10px;">
+            </ng-container>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <select class="form-control" id="category" name="category" [(ngModel)]="newPost.categoryId" required>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" [(ngModel)]="newPost.price">
+    </div>
+    <button type="submit">Create Post</button>
+</form>

@@ -1,0 +1,35 @@
+<h2>Reservations</h2>
+<table class="reservation-table">
+  <thead>
+    <tr>
+      <th>Client ID</th>
+      <th>Username</th>
+      <th>Date</th>
+      <th>Time Start</th>
+      <th>Time End</th>
+      <th>Message</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{ reservation.clientId }}</td>
+      <td>{{ reservation.username }}</td>
+      <td>{{ reservation.date }}</td>
+      <td>{{ reservation.time }}</td>
+      <td>{{ reservation.timeEnd }}</td>
+      <td>{{ reservation.message }}</td>
+      <td>
+        <span *ngIf="reservation.acceptation === true">Accepted</span>
+        <span *ngIf="reservation.acceptation === false">Rejected</span>
+        <span *ngIf="reservation.acceptation !== true && reservation.acceptation !== false">Pending</span>
+      </td>
+      <td>
+        <button (click)="updateAcceptation(reservation.id.toString(), true, reservation.clientId)" *ngIf="!reservation.acceptation">Confirm</button>
+        <button (click)="updateAcceptation(reservation.id.toString(), false, reservation.clientId)" *ngIf="!reservation.acceptation">Reject</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>

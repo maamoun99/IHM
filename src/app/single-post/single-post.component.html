@@ -1,0 +1,6 @@
+<div *ngIf="post">
+    <h2>{{ post.title }}</h2>
+    <p *ngIf="post.content">{{ post.content }}</p>
+    <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Post Image">
+    <p *ngIf="post.price">Price: {{ post.price }}</p>
+</div>
