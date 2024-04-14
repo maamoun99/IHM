@@ -61,6 +61,7 @@
   opacity: 0.8;
 }
 .reservations-container {
+  width: 90%;
   margin: 20px auto; /* Centre le conteneur horizontalement et ajoute un espacement autour */
   max-width: 800px; /* Définit une largeur maximale pour le conteneur */
   padding: 20px; /* Ajoute de l'espacement intérieur */

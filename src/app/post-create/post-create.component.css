@@ -1,23 +1,14 @@
 .create-post-form {
-    width: 50%;
-    /* Occupe la moitié de l'écran */
-    margin: 20px auto 0;
-    /* Centre le formulaire horizontalement et ajoute de l'espace en haut */
-    padding: 20px;
-    /* Espacement intérieur */
-    background-color: #f8f9fa;
-    /* Couleur de fond */
-    border: 1px solid #ced4da;
-    /* Bordure */
-    border-radius: 5px;
-    /* Coins arrondis */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* Ombre */
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
     margin-bottom: 20px;
-    /* Espacement entre les groupes de champs */
 }
 
 label {
@@ -27,45 +18,27 @@ label {
 }
 
 input[type="text"],
+input[type="number"],
 textarea,
-input[type="number"] {
-    width: calc(100% - 10px);
-    /* Calcul de la largeur pour laisser de l'espace à droite */
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    transition: border-color 0.3s;
-    margin-bottom: 20px;
-    /* Espacement en bas */
-    box-sizing: border-box;
-    /* Inclure le padding et la bordure dans la largeur */
-}
-
 select {
     width: 100%;
-    /* Occupe toute la largeur du conteneur */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
     transition: border-color 0.3s;
-    margin-bottom: 20px;
-    /* Espacement en bas */
 }
 
-button[type="submit"] {
-    font-size: 18px;
-    /* Taille de police */
-    background-color: #049c25;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    float: right;
-    /* Aligner à droite */
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #049c25;
+}
+
+.file-upload {
+    position: relative;
 }
 
 .custom-file-input {
@@ -79,8 +52,39 @@ button[type="submit"] {
 }
 
 .custom-file-label {
-    font-size: 18px;
-    /* Taille de police */
+    background-color: #049c25;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.custom-file-label:hover {
+    background-color: #049c25;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.preview-image {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.preview-image:hover {
+    transform: scale(1.05);
+}
+
+button[type="submit"] {
     background-color: #049c25;
     color: #fff;
     padding: 12px 20px;
@@ -91,7 +95,6 @@ button[type="submit"] {
     transition: background-color 0.3s;
 }
 
-.custom-file-label:hover {
-    background-color: #027a1b;
-    /* Couleur de fond au survol */
+button[type="submit"]:hover {
+    background-color: #049c25;
 }
