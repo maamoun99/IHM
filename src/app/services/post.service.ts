@@ -64,4 +64,5 @@ export class PostService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Post>(url);
   }
+  
 }

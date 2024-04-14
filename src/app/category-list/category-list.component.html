@@ -1,8 +1,12 @@
 <div>
     <h2>Category List</h2>
+    <button routerLink="/category/create" class="btn btn-primary">Create New Category</button>
     <ul>
         <li *ngFor="let category of categories">
-            {{ category.name }} - {{ category.sous_categorie }}
+            {{ category.name }}
+            <button (click)="editCategory(category.id)" class="btn btn-info">Edit</button>
+            <button (click)="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
         </li>
     </ul>
+    
 </div>
