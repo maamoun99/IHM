@@ -1,34 +1,69 @@
-.footer {
-    background-color: #f8f9fa;
-    /* Set background color */
-    padding: 20px 0;
-    /* Add padding */
-    text-align: center;
-    /* Align text to center */
-    margin-top: 300px;
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 50px 0;
+    margin-top: 50px;
 }
 
-.container {
-    max-width: 1200px;
-    /* Set maximum width */
-    margin: 0 auto;
-    /* Center the container */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-hr {
-    border: none;
-    /* Remove border */
-    border-top: 1px solid #ccc;
-    /* Add top border */
-    margin: 10px auto;
-    /* Add margin */
-    width: 50%;
-    /* Set width */
+.footer-section {
+    flex: 1;
+    margin: 20px;
 }
 
-p {
-    color: #555;
-    /* Set text color */
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p {
     font-size: 14px;
-    /* Set font size */
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-input {
+    margin-bottom: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #049c25;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #037a1d;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #777;
 }

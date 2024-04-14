@@ -1,0 +1,55 @@
+.container-fluid.body-background {
+    background-color: #f9f9f9;
+    padding-bottom: 50px;
+    /* Adjust padding as needed */
+}
+
+.job,
+.filter {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.job .card-body,
+.filter .card-body {
+    padding: 20px;
+}
+
+.job .card-body hr {
+    border-color: #ddd;
+}
+
+.job .card-body h6 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.job .card-body p {
+    color: #666;
+}
+
+.job .card-body .row.pt-1 {
+    margin-top: 10px;
+}
+
+.filter .card-body h6 {
+    color: #333;
+    font-weight: bold;
+}
+
+.swiper-container {
+    margin-top: 20px;
+}
+
+.swiper-pagination {
+    position: relative;
+    bottom: 10px;
+}
+
+.round-button {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-size: 14px;
+}
