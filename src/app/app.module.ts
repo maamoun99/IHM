@@ -15,7 +15,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { ProfilComponent } from './profil/profil.component';
 import { HeaderComponent } from './header/header.component';
-import { UserlistComponent } from './userlist/userlist.component';
 import { ReservationFormComponent } from './reservation-form/reservation-form.component';
 import { DatePipe } from '@angular/common';
 import { RegistrationService } from './auth.guard';
@@ -24,6 +23,9 @@ import { OrderComponent } from './order/order.component';
 import { MessageComponent } from './message/message.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -36,15 +38,17 @@ import { CategoryListComponent } from './category-list/category-list.component';
     SinglePostComponent,
     ProfilComponent,
     HeaderComponent,
-    UserlistComponent,
     ReservationFormComponent,
     FooterComponent,
     OrderComponent,
     MessageComponent,
     CategoryCreateComponent,
     CategoryListComponent,
+    EditProfileComponent,
+    UserListComponent,
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,

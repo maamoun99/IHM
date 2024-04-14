@@ -10,6 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
   userRole: string = '';
+  showBannedMessage = false; // Define showBannedMessage property
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 

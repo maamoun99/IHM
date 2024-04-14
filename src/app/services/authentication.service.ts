@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
-import {  throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Users } from 'src/model/user.model';
 
 @Injectable({
   providedIn: 'root'
-  
+
 })
 export class AuthenticationService {
   private apiUrl = 'http://localhost:3000/users';
@@ -45,6 +45,7 @@ export class AuthenticationService {
       );
   }
 
+
   logout(): void {
     this.isAuthenticatedSource.next(false);
     this.roleSource.next('');
@@ -59,7 +60,16 @@ export class AuthenticationService {
   getUserRole(): Observable<string> {
     return this.role$;
   }
-
+  fetchCurrentUser(userId: string): Observable<Users> {
+    // Assuming you have an API endpoint to fetch current user info
+    // Adjust the URL to match your backend
+    return this.http.get<Users>(`http://localhost:3000/users/${userId}`);
+  }
+  updateUser(user: Users): Observable<Users> {
+    // Assuming you have an API endpoint to update user information
+    // Adjust the URL to match your backend
+    return this.http.put<Users>(`${this.apiUrl}/${user.id}`, user);
+  }
   getUsername(): Observable<string> {
     return this.username$;
   }
@@ -72,7 +82,7 @@ export class AuthenticationService {
       map(user => user.phone)
     );
   }
-  
+
   private getUser(): Observable<Users> {
     return this.http.get<Users>(`${this.apiUrl}/current`).pipe(
       tap(user => {

@@ -55,43 +55,28 @@ export class PostListComponent implements OnInit {
     }, 500);
   }
   deletePost(id: number): void {
-    // Fetch the post to be deleted
-    this.postService.getPostById(id).subscribe(post => {
-      // Check if the current user is the author of the post
-      if (post.userId === this.currentUser) {
-        // If the current user is the author, proceed with deletion
-        this.postService.deletePost(id).subscribe(
-          () => {
-            console.log('Post deleted successfully');
-            // Remove the deleted post from the local posts array
-            this.posts = this.posts.filter(post => post.id !== id);
-            // Redirect to the posts list
-            this.router.navigate(['/posts']);
-          },
-          error => {
-            if (error.status === 404) {
-              console.error('Post not found. Unable to delete.');
-              // Optionally, you can show a message to the user indicating that the post was not found
-            } else {
-              console.error('Error deleting post:', error);
-              // Handle other errors as needed
-            }
-          }
-        );
-      } else {
-        console.error('You are not authorized to delete this post.');
-        // Optionally, you can show a message indicating that the user is not authorized
-      }
-    });
+    // Confirm deletion with the user
+    if (confirm('Are you sure you want to delete this post?')) {
+      this.postService.deletePost(id).subscribe(response => {
+        // Remove the deleted post from the list
+        this.posts = this.posts.filter(post => post.id !== id);
+      });
+    }
   }
   modifyPost(post: Post): void {
     // Check if the current user is the author of the post
-    if (post.userId === this.currentUser) {
-      this.router.navigate(['/posts/edit', post.id]); // Convert post.id to a string before navigating
-    } else {
-      console.error('You are not authorized to modify this post.');
-      // Optionally, you can show a message indicating that the user is not authorized
-    }
+
+    this.postService.getPostById(post.id).subscribe(
+      (retrievedPost: Post) => {
+        // Navigate to the edit route with the retrieved post data
+        this.router.navigate(['/posts/edit', post.id], { state: { post: retrievedPost } });
+      },
+      (error) => {
+        console.error('Error retrieving post:', error);
+        // Optionally, handle the error, e.g., show an error message to the user
+      }
+    );
+
   }
 
   getPosts(): void {

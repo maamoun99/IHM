@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Edit Profile</h2>
+    <form class="edit-profile-form" (ngSubmit)="saveProfile()">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Name" name="name" [(ngModel)]="currentUser.username" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Email" name="email" [(ngModel)]="currentUser.email" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Gender" name="gender" [(ngModel)]="currentUser.gender" required>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Phone" name="phone" [(ngModel)]="currentUser.phone" required>
+        </mat-form-field>
+        <!-- Add additional fields as needed -->
+
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
+</div>
