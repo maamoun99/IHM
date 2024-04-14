@@ -23,9 +23,14 @@ import { OrderComponent } from './order/order.component';
 import { MessageComponent } from './message/message.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
     PostListComponent,
     PostCreateComponent,
@@ -41,6 +46,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     MessageComponent,
     CategoryCreateComponent,
     CategoryListComponent,
+    EditProfileComponent,
+    UserListComponent,
   ],
   imports: [
     MatDialogModule,
@@ -53,10 +60,10 @@ import { CategoryListComponent } from './category-list/category-list.component';
     AppRoutingModule,
   ],
   providers: [
-    RegistrationService,
-    DatePipe,
     PostListComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    RegistrationService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

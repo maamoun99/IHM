@@ -13,6 +13,8 @@ import { RoleGuard } from './services/role.guard'; // Import the RoleGuard
 import { MessageComponent } from './message/message.component'; // Import the MessageComponent
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostListComponent },
