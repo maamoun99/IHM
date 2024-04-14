@@ -24,6 +24,8 @@ import { OrderComponent } from './order/order.component';
 import { MessageComponent } from './message/message.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatPaginatorModule
   ],
   providers: [
     RegistrationService,

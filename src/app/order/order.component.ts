@@ -43,4 +43,22 @@ export class OrderComponent implements OnInit {
       }
     );
   }
+  currentPage = 1;
+  itemsPerPage = 5; // Nombre d'éléments par page
+  totalItems = 100; // Total des éléments dans la liste
+
+  // Fonction pour naviguer à la page précédente
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  // Fonction pour naviguer à la page suivante
+  nextPage() {
+    const maxPage = Math.ceil(this.totalItems / this.itemsPerPage);
+    if (this.currentPage < maxPage) {
+      this.currentPage++;
+    }
+  }
 }

@@ -15,7 +15,8 @@ export class ReservationFormComponent implements OnInit {
   reservationForm!: FormGroup;
   clientId: string = '';
   currentDate: string = '';
-  errorMessage: string = ''; // Add errorMessage property
+  errorMessage: string = '';
+  selectedPost: any = {}; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,13 +39,12 @@ export class ReservationFormComponent implements OnInit {
   initForm(username: string): void {
     this.reservationForm = this.formBuilder.group({
       clientId: [username, Validators.required],
-      username: [username, Validators.required],
+      username: [this.selectedPost.username, Validators.required],
       date: [this.currentDate, Validators.required],
       time: ['', Validators.required],
-      timeEnd: ['', Validators.required], // Initialize timeEnd control
+      timeEnd: ['', Validators.required],
       message: [''],
-      acceptaion: [''], // Initialize confirmed and rejected properties
-
+      acceptation: [''],
     });
   }
 
@@ -57,7 +57,7 @@ export class ReservationFormComponent implements OnInit {
           this.orderService.addOrder(reservationData);
           this.router.navigate(['/posts']);
         },
-        (error: HttpErrorResponse) => { // Handle error response
+        (error: HttpErrorResponse) => {
           console.error('Error creating reservation:', error);
           if (error.status === 404) {
             this.errorMessage = 'Reservation not found. Please try again.';
@@ -69,4 +69,8 @@ export class ReservationFormComponent implements OnInit {
     }
   }
 
+  setSelectedPost(post: any): void {
+    this.selectedPost = post;
+    this.initForm(post.username);
+  }
 }
