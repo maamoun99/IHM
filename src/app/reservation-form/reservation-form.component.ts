@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { OrderService } from '../services/order.service';
-import { HttpErrorResponse } from '@angular/common/http'; // Import HttpErrorResponse for error handling
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservation-form',
@@ -16,7 +16,7 @@ export class ReservationFormComponent implements OnInit {
   clientId: string = '';
   currentDate: string = '';
   errorMessage: string = '';
-  selectedPost: any = {}; 
+  selectedPost: any = {}; // Initialize selectedPost with an empty object
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,6 +71,6 @@ export class ReservationFormComponent implements OnInit {
 
   setSelectedPost(post: any): void {
     this.selectedPost = post;
-    this.initForm(post.username);
+    this.initForm(post.username); // Pass the username of the selected post to the initForm method
   }
 }

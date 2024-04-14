@@ -32,4 +32,8 @@ export class HeaderComponent implements OnInit {
   isClient(): boolean {
     return this.userRole === 'client';
   }
+
+  isAdmin(): boolean {
+    return this.userRole === 'admin';
+  }
 }
