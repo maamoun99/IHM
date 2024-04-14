@@ -1,5 +1,6 @@
-<h2>Create Post</h2>
 <form class="create-post-form" (submit)="onSubmit()" enctype="multipart/form-data">
+    <h2 class="form-title">Create your post</h2> <!-- Titre ajouté -->
+
     <div class="form-group">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" [(ngModel)]="newPost.title" required>
@@ -8,7 +9,7 @@
         <label for="content">Content:</label>
         <textarea id="content" name="content" [(ngModel)]="newPost.content" required></textarea>
     </div>
-    <div class="form-group file-upload">
+    <!-- <div class="form-group file-upload">
         <label for="customFile">Images:</label>
         <input type="file" class="custom-file-input" id="customFile" accept="image/*" multiple formControlName="image"
             (change)="previewImages($event)">
@@ -18,7 +19,7 @@
                 <img [src]="imageUrl" alt="Image Preview" class="preview-image">
             </ng-container>
         </div>
-    </div>
+    </div> -->
     <div class="form-group">
         <label for="category">Category:</label>
         <select class="form-control" id="category" name="category" [(ngModel)]="newPost.categoryId" required>
@@ -29,5 +30,7 @@
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" [(ngModel)]="newPost.price">
     </div>
-    <button type="submit">Create Post</button>
+    <div class="form-group">
+        <button type="submit">Create Post</button>
+    </div>
 </form>

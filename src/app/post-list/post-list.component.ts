@@ -54,33 +54,27 @@ export class PostListComponent implements OnInit {
   }
 
   deletePost(id: number): void {
-    // Fetch the post to be deleted
     this.postService.getPostById(id).subscribe(post => {
-      // Check if the current user is the author of the post
-      if (post.userId === this.currentUser) {
-        // If the current user is the author, proceed with deletion
-        this.postService.deletePost(id).subscribe(
-          () => {
-            console.log('Post deleted successfully');
-            // Remove the deleted post from the local posts array
-            this.posts = this.posts.filter(post => post.id !== id);
-            // Redirect to the posts list
-            this.router.navigate(['/posts']);
-          },
-          error => {
-            if (error.status === 404) {
-              console.error('Post not found. Unable to delete.');
-              // Optionally, you can show a message to the user indicating that the post was not found
-            } else {
-              console.error('Error deleting post:', error);
-              // Handle other errors as needed
+      this.userRole$.subscribe(role => {
+        if (post.userId === this.currentUser || role === 'admin') {
+          this.postService.deletePost(id).subscribe(
+            () => {
+              console.log('Post deleted successfully');
+              this.posts = this.posts.filter(p => p.id !== id);
+              this.router.navigate(['/posts']);
+            },
+            error => {
+              if (error.status === 404) {
+                console.error('Post not found. Unable to delete.');
+              } else {
+                console.error('Error deleting post:', error);
+              }
             }
-          }
-        );
-      } else {
-        console.error('You are not authorized to delete this post.');
-        // Optionally, you can show a message indicating that the user is not authorized
-      }
+          );
+        } else {
+          console.error('You are not authorized to delete this post.');
+        }
+      });
     });
   }
   modifyPost(post: Post): void {

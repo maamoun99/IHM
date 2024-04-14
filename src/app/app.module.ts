@@ -23,8 +23,8 @@ import { OrderComponent } from './order/order.component';
 import { MessageComponent } from './message/message.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
@@ -55,7 +55,7 @@ import { UserListComponent } from './user-list/user-list.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     RegistrationService,
