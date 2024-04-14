@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/model/post.model';
 import { PostService } from '../services/post.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
@@ -11,7 +12,9 @@ import { Role } from 'src/model/user.model'; // Assuming Role is imported from u
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  styleUrls: ['./post-list.component.css'],
+  providers: [PostListComponent] // Add PostListComponent as a provider
+
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
@@ -23,6 +26,7 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private postService: PostService,
     private authService: AuthenticationService,
     private categoryService: CategoryService
@@ -31,9 +35,10 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.userRole$ = this.authService.getUserRole();
     this.authService.getUsername().subscribe(username => {
-      this.currentUser = username;
+      this.currentUser = username; // Get the current user's username
     });
 
+    // Fetch posts and categories concurrently using forkJoin
     forkJoin({
       posts: this.postService.getPosts(),
       categories: this.categoryService.getAllCategories()
@@ -46,11 +51,10 @@ export class PostListComponent implements OnInit {
         ...post,
         categoryName: this.categories[post.categoryId] || 'Uncategorized'
       }));
-    });
 
-    setTimeout(() => {
-      this.showTitle = true;
-    }, 500);
+      // Filter posts based on search query
+      this.posts = this.filterPosts();
+    });
   }
 
   deletePost(id: number): void {

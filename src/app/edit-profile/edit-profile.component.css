@@ -30,6 +30,7 @@
 }
 
 .mat-raised-button {
+<<<<<<< HEAD
     padding: 10px 20px; /* Espacement intérieur */
     font-size: 18px; /* Taille de police */
     background-color: #049c25; /* Couleur de fond */
@@ -53,4 +54,8 @@ button[type="submit"] {
     cursor: pointer;
     display: inline-block;
     transition: background-color 0.3s;
+=======
+    width: 100%;
+    padding: 10px 0;
+>>>>>>> 58de44c50ead40cbf44e213fca33b0b4c7739620
 }

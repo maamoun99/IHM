@@ -83,7 +83,8 @@
       "password": "123",
       "role": "client",
       "phone": "55323216",
-      "status": true
+      "status": true,
+      "gender": "home"
     },
     {
       "id": "08ed",
@@ -102,7 +103,7 @@
       "role": "prestateur",
       "phone": "24250765",
       "status": false,
-      "gender": "home"
+      "gender": "F7al"
     },
     {
       "id": "f0d82b22-ef68-4103-b844-4743f16c9f66",
@@ -129,6 +130,15 @@
       "password": "123",
       "role": "admin",
       "phone": "55323216",
+      "status": true
+    },
+    {
+      "id": "d86ff9fd-d680-48a1-a63e-e91093cc1e24",
+      "username": "ihebdhouib@gmail.com",
+      "email": "iheb@gmail.com",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "26720354",
       "status": true
     }
   ],

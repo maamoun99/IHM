@@ -1,6 +1,96 @@
-<div *ngIf="post">
-    <h2>{{ post.title }}</h2>
-    <p *ngIf="post.content">{{ post.content }}</p>
-    <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="Post Image">
-    <p *ngIf="post.price">Price: {{ post.price }}</p>
-</div>
+<div *ngIf="post" class="container-fluid body-background">
+    <div class="container pt-5 ">
+        <div class="row">
+            <div class="col-8  job">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h6 style="margin-bottom: 0;">{{ post.title}}
+                                                </h6>
+                                                <a>{{ post.categoryName }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="card-text"><i class="fa fa-suitcase" aria-hidden="true"></i> {{ post.categoryName }}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text">Price: {{ post.price.toFixed(2) }} DT</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ post.username }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row pt-1">
+                                    <div class="col-3">
+                                        <small>Few Hours Ago</small>
+                                    </div>
+                                    <div class="col-2 text-end">
+                                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="col-7 text-end">
+                                        <button *ngIf="(userRole$ | async) === 'client'" class="btn btn-outline-primary round-button mx-2"
+                                            type="button">Apply</button>
+                                        <button *ngIf="(userRole$ | async) != 'client'"  class="btn btn-primary round-button" type="button">Login To
+                                            Apply</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Job description</h5>
+                                <div class="p-2">
+                                    {{ post.content }}
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 filter">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="text-center">Reviews</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="text-center">Salary Insights</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" *ngFor="let imageUrl of post.imageUrl">
+                            <img [src]="imageUrl" height="70" alt="Slide">
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
