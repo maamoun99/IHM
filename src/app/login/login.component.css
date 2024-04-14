@@ -56,7 +56,7 @@
 }
 
 .login-button:hover {
-  background-color: #166fe5;
+  background-color: #027a1b;
 }
 
 .form-links {
@@ -83,7 +83,7 @@
 .register-button {
   display: inline-block;
   padding: 12px 20px;
-  background-color: rgb(1, 92, 230);
+  background-color: #36a420;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -93,7 +93,7 @@
 }
 
 .register-button:hover {
-  background-color: #36a420;
+  background-color: #027a1b;
 }
 
 .line-separator {

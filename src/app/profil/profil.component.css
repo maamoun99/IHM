@@ -1,8 +1,17 @@
+/* Style pour le titre */
+.reservations-title {
+    font-size: 24px;
+    color: #027a1b; /* Couleur demandée */
+    margin-bottom: 20px;
+  }
+  
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-       
+    /* max-width: 500px; */
+    margin: 0 auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     
 }
 
@@ -43,13 +52,14 @@
 }
 
 .post-actions button {
-    padding: 8px 12px;
+    padding: 8px 16px; /* Ajout de padding */
     margin-left: 10px;
+    margin-bottom: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+  }
 
 .post-actions button.edit-button {
     background-color: #0070b9;
@@ -61,24 +71,26 @@
     color: #ffffff;
 }
 
-.post-actions button:hover {
+.post-actions button.edit-button:hover {
     background-color: #0056a2;
 }
-
+.post-actions button.delete-button:hover {
+    background-color: #c9302c;
+}
 .edit-profile-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #2e77c7;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
+    padding: 10px 20px; /* Espacement intérieur */
+    font-size: 18px; /* Taille de police */
+    background-color: #049c25; /* Couleur de fond */
+    color: #fff; /* Couleur de police */
+    border: none; /* Supprime la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur */
+}
+.edit-profile-button:hover {
+    background-color: #027a1b; /* Couleur de fond au survol */
 }
 
-.edit-profile-button:hover {
-    background-color: #1e5aa5;
-}
+
 .post-image {
     width: 100%; /* Assure que l'image occupe toute la largeur du conteneur */
     height: 200px; /* Définit la hauteur de l'image */

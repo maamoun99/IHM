@@ -1,19 +1,19 @@
 <div class="profile-container" *ngIf="currentUser">
     <!-- Personal Information -->
     <div class="personal-info-box">
-        <h2>Welcome to your profile, {{ currentUser.username }}</h2>
+        <h2 class="reservations-title">Welcome to your profile {{ currentUser.username }}</h2>
         <div class="personal-details">
-            <p><strong>Email:</strong> {{ currentUser.email }}</p>
-            <p><strong>Gender:</strong> {{ currentUser.gender }}</p>
-            <p><strong>Role:</strong> {{ currentUser.role }}</p>
-            <p><strong>Phone:</strong> {{ currentUser.phone }}</p>
+            <p><strong>Email : </strong> {{ currentUser.email }}</p>
+            <p><strong>Gender : </strong> {{ currentUser.gender }}</p>
+            <p><strong>Role : </strong> {{ currentUser.role }}</p>
+            <p><strong>Phone : </strong> {{ currentUser.phone }}</p>
             <button class="edit-profile-button" (click)="openEditProfileDialog()">Edit Profile</button>
         </div>
     </div>
 
     <!-- Posts Section -->
     <div class="user-posts-box">
-        <h3>Posts by {{ currentUser.username }}</h3>
+        <h2 class="reservations-title">Posts by {{ currentUser.username }}</h2>
         <div class="post-container">
             <div *ngFor="let post of userPosts" class="post-item">
                 <div class="post-details">
