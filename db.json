@@ -50,6 +50,30 @@
       "price": 20,
       "userId": "1c282b51-5956-41c2-9e39-7ae5ecbf87a3",
       "username": "mahmoud"
+    },
+    {
+      "id": 2071,
+      "title": "Bhayem",
+      "content": "mbahhem",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713130851/bbw2j8axev1wqnemp8am.png"
+      ],
+      "price": 222,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous",
+      "categoryId": "3352",
+      "categoryName": ""
+    },
+    {
+      "id": 3987,
+      "title": "az",
+      "content": "az",
+      "imageUrl": [],
+      "price": 11,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous",
+      "categoryId": "3959",
+      "categoryName": ""
     }
   ],
   "users": [
@@ -70,7 +94,8 @@
       "password": "123",
       "role": "client",
       "phone": "55323216",
-      "status": true
+      "status": true,
+      "gender": "home"
     },
     {
       "id": "08ed",
@@ -89,7 +114,7 @@
       "role": "prestateur",
       "phone": "24250765",
       "status": false,
-      "gender": "home"
+      "gender": "F7al"
     },
     {
       "id": "f0d82b22-ef68-4103-b844-4743f16c9f66",
@@ -141,16 +166,6 @@
       "sous_categorie": "3iamart"
     },
     {
-      "id": "2925",
-      "name": "belaar",
-      "sous_categorie": "chbabek"
-    },
-    {
-      "id": "7925",
-      "name": "belaar",
-      "sous_categorie": "fgfdqsfdsqds"
-    },
-    {
       "id": "9121",
       "name": "nejar",
       "sous_categorie": "maison"
@@ -164,6 +179,16 @@
       "id": "6716",
       "name": "Santé",
       "sous_categorie": "tbib s9olli"
+    },
+    {
+      "id": 4470,
+      "name": "najla",
+      "sous_categorie": []
+    },
+    {
+      "id": 5754,
+      "name": "hab",
+      "sous_categorie": "az"
     }
   ],
   "reservations": [
