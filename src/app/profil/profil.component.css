@@ -79,3 +79,8 @@
 .edit-profile-button:hover {
     background-color: #1e5aa5;
 }
+.post-image {
+    width: 100%; /* Assure que l'image occupe toute la largeur du conteneur */
+    height: 200px; /* Définit la hauteur de l'image */
+}
+
