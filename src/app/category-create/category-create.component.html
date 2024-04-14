@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-group">
-        <label for="sous_categorie">Sous Category</label>
+        <label for="sous_categorie">Descreption</label>
         <input type="text" class="form-control" id="sous_categorie" name="sous_categorie"
             [(ngModel)]="newCategory.sous_categorie" required> <!-- Update here -->
         <div *ngIf="categoryForm.controls['sous_categorie'].errors?.['required'] && categoryForm.controls['sous_categorie'].touched"
