@@ -29,4 +29,24 @@ export class CategoryListComponent implements OnInit {
       }
     );
   }
+
+  editCategory(id: number): void {
+    // Rediriger vers la page de modification de catégorie avec l'ID de la catégorie spécifique
+    // Par exemple, vous pouvez utiliser le routeur pour naviguer vers '/category/edit/:id'
+  }
+
+  deleteCategory(id: number): void {
+    if (confirm('Are you sure you want to delete this category?')) {
+      this.categoryService.deleteCategory(id).subscribe(
+        () => {
+          // Supprimer la catégorie de la liste après la suppression réussie
+          this.categories = this.categories.filter(category => category.id !== id);
+          console.log('Category deleted successfully');
+        },
+        (error) => {
+          console.error('Error deleting category:', error);
+        }
+      );
+    }
+  }
 }

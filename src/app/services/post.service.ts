@@ -9,7 +9,7 @@ import { Users } from 'src/model/user.model'; // Assuming you have a User interf
 })
 export class PostService {
   private apiUrl = 'http://localhost:3000/posts';
-  private url = 'http://localhost:3000'
+  private url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
@@ -28,10 +28,12 @@ export class PostService {
       })
     );
   }
+
   filterPostsByUser(posts: Post[], username: string): Observable<Post[]> {
     // Filter the posts based on the username of the author
     return of(posts.filter(post => post.userId === username));
   }
+
   getUserById(id: string): Observable<Users> {
     const url = `${this.url}/users/${id}`; // Modify the URL to accept user ID
     return this.http.get<Users>(url).pipe(
@@ -44,7 +46,6 @@ export class PostService {
       })
     );
   }
-
 
   createPost(post: Post): Observable<Post> {
     return this.http.post<Post>(this.apiUrl, post);
@@ -63,5 +64,8 @@ export class PostService {
   getPostById(id: number): Observable<Post> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Post>(url);
+  }
+  getPostsByUserId(userId: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.apiUrl}?userId=${userId}`);
   }
 }

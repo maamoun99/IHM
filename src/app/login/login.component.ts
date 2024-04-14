@@ -28,7 +28,10 @@ export class LoginComponent {
               this.router.navigate(['/reservation']);
             } else if (response.role === 'prestateur') {
               this.router.navigate(['/reservation']);
+            }else if (response.role === 'admin'){
+              this.router.navigate(['/profil']);
             }
+
           } else {
             this.errorMessage = 'Invalid username or password';
           }

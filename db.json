@@ -18,15 +18,6 @@
       "username": "fakousa"
     },
     {
-      "id": "3413",
-      "title": "midou",
-      "content": "enno5",
-      "imageUrl": "",
-      "price": 20,
-      "userId": "1b53",
-      "username": "fakousa"
-    },
-    {
       "id": "5850",
       "title": "Bsekli",
       "content": "installation gaz lel moutourat ",
@@ -34,33 +25,6 @@
       "price": 20,
       "userId": "bbdefaf3-2208-4dff-bc22-74dce1cca6ea",
       "username": "iheb"
-    },
-    {
-      "id": "4083",
-      "title": "tit",
-      "content": "nseb barcha",
-      "imageUrl": "",
-      "price": 3,
-      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
-      "username": "fagous"
-    },
-    {
-      "id": "1306",
-      "title": "nik",
-      "content": "bouk",
-      "imageUrl": [],
-      "price": 22,
-      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
-      "username": "fagous"
-    },
-    {
-      "id": "2871",
-      "title": "bv",
-      "content": "hh",
-      "imageUrl": [],
-      "price": 2,
-      "userId": "1b53",
-      "username": "fakousa"
     },
     {
       "id": "9090",
@@ -88,16 +52,16 @@
       "username": "mahmoud"
     },
     {
-      "id": "6456",
+      "id": 6456,
       "title": "zbaybi",
       "content": "7aggar",
       "imageUrl": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712958516/gucwnjhswpcrpnrjoc0f.jpg"
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713130996/mwnaw0rgsqluo2v6awp7.png"
       ],
-      "price": 20,
+      "price": 102,
       "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
       "username": "fagous",
-      "categoryId": "3352",
+      "categoryId": "6829",
       "categoryName": ""
     },
     {
@@ -120,7 +84,10 @@
       "username": "fakousa",
       "email": "fak@gmai.com",
       "password": "159",
-      "role": "prestateur"
+      "role": "prestateur",
+      "status": true,
+      "gender": "Rajel",
+      "phone": "55323216"
     },
     {
       "id": "ca36",
@@ -146,15 +113,16 @@
       "email": "fk@gmail.com",
       "password": "123",
       "role": "prestateur",
-      "phone": "123",
-      "status": true
+      "phone": "24250765",
+      "status": false,
+      "gender": "home"
     },
     {
       "id": "f0d82b22-ef68-4103-b844-4743f16c9f66",
       "username": "nounou1",
       "email": "niggar@gmail",
       "password": "123",
-      "role": "client",
+      "role": "admin",
       "phone": "25252525",
       "status": true
     },
@@ -172,7 +140,7 @@
       "username": "mahmoud",
       "email": "mah@gmail.com",
       "password": "123",
-      "role": "prestateur",
+      "role": "admin",
       "phone": "55323216",
       "status": true
     },
@@ -191,11 +159,6 @@
       "id": "3352",
       "name": "Animals",
       "sous_categorie": "bhayem"
-    },
-    {
-      "id": 4755,
-      "name": "wassim bahloul",
-      "sous_categorie": ":bhnb"
     }
   ],
   "reservations": [
@@ -224,12 +187,9 @@
       "message": "qfdee"
     },
     {
-      "id": "ebe1",
+      "acceptation": true,
       "clientId": "kiki",
-      "username": "fagous",
-      "date": "2024-04-09",
-      "time": "15:30",
-      "message": "صباح النور والأمل نسأل الله أن يتقبل صيامكم وصيامنا كما نتمنى لكم عيد سعيد مبارك ينعاد عليكم بالفرحة وتيسير الأمور "
+      "id": "ebe1"
     },
     {
       "acceptation": false,
@@ -333,6 +293,29 @@
       "acceptation": true,
       "clientId": "kiki",
       "id": "0ae0"
+    },
+    {
+      "id": "7a73",
+      "clientId": "kiki",
+      "username": "koukoiu",
+      "date": "2024-04-18",
+      "time": "21:59",
+      "timeEnd": "02:56",
+      "message": "hellouu",
+      "acceptation": ""
+    },
+    {
+      "id": "9b01",
+      "clientId": "kiki",
+      "username": "koukou",
+      "date": "2024-04-09",
+      "time": "23:04",
+      "timeEnd": "12:34",
+      "message": "hellouu",
+      "acceptation": ""
     }
-  ]
+  ],
+  "customRoutes": {
+    "/users/:id": "/users/:id"
+  }
 }

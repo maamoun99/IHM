@@ -1,12 +1,13 @@
 <header>
-    <nav>
-      <ul>
-        <li><a routerLink="/posts">Home</a></li>
-        <li *ngIf="isAuthenticated"><a [routerLink]="userRole === 'client' ? '/posts' : '/profil'">Profile</a></li>
-        <li *ngIf="isAuthenticated && userRole === 'prestateur'"><a routerLink="/orders">Orders</a></li>
-        <li *ngIf="isAuthenticated && isClient()"><a routerLink="/message">Message</a></li>
-        <li *ngIf="isAuthenticated"><a (click)="logout()">Logout</a></li>
-        <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <ul>
+      <li><a routerLink="/posts">Home</a></li>
+      <li *ngIf="isAuthenticated"><a [routerLink]="userRole === 'client' ? '/posts' : '/profil'">Profile</a></li>
+      <li *ngIf="isAuthenticated && userRole === 'prestateur'"><a routerLink="/orders">Orders</a></li>
+      <li *ngIf="isAuthenticated && isClient()"><a routerLink="/message">Message</a></li>
+      <li *ngIf="isAuthenticated && isAdmin()"><a routerLink="/category">Category</a></li>
+      <li *ngIf="isAuthenticated"><a (click)="logout()">Logout</a></li>
+      <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>
+    </ul>
+  </nav>
+</header>

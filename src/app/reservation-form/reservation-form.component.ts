@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { OrderService } from '../services/order.service';
-import { HttpErrorResponse } from '@angular/common/http'; // Import HttpErrorResponse for error handling
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservation-form',
@@ -15,7 +15,8 @@ export class ReservationFormComponent implements OnInit {
   reservationForm!: FormGroup;
   clientId: string = '';
   currentDate: string = '';
-  errorMessage: string = ''; // Add errorMessage property
+  errorMessage: string = '';
+  selectedPost: any = {}; // Initialize selectedPost with an empty object
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,13 +39,12 @@ export class ReservationFormComponent implements OnInit {
   initForm(username: string): void {
     this.reservationForm = this.formBuilder.group({
       clientId: [username, Validators.required],
-      username: [username, Validators.required],
+      username: [this.selectedPost.username, Validators.required],
       date: [this.currentDate, Validators.required],
       time: ['', Validators.required],
-      timeEnd: ['', Validators.required], // Initialize timeEnd control
+      timeEnd: ['', Validators.required],
       message: [''],
-      acceptaion: [''], // Initialize confirmed and rejected properties
-
+      acceptation: [''],
     });
   }
 
@@ -57,7 +57,7 @@ export class ReservationFormComponent implements OnInit {
           this.orderService.addOrder(reservationData);
           this.router.navigate(['/posts']);
         },
-        (error: HttpErrorResponse) => { // Handle error response
+        (error: HttpErrorResponse) => {
           console.error('Error creating reservation:', error);
           if (error.status === 404) {
             this.errorMessage = 'Reservation not found. Please try again.';
@@ -69,4 +69,8 @@ export class ReservationFormComponent implements OnInit {
     }
   }
 
+  setSelectedPost(post: any): void {
+    this.selectedPost = post;
+    this.initForm(post.username); // Pass the username of the selected post to the initForm method
+  }
 }

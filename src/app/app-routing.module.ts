@@ -13,7 +13,6 @@ import { RoleGuard } from './services/role.guard'; // Import the RoleGuard
 import { MessageComponent } from './message/message.component'; // Import the MessageComponent
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostListComponent },
@@ -22,11 +21,12 @@ const routes: Routes = [
   { path: 'posts/edit/:id', component: PostEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'prestateur' } }, // Protect this route with RoleGuard
   { path: 'profil', component: ProfilComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'users', component: UserListComponent }, // Protect this route with RoleGuard and allow only admin
   { path: 'category/create', component: CategoryCreateComponent },
   { path: 'category', component: CategoryListComponent },
   { path: 'reservation', component: ReservationFormComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'orders', component: OrderComponent }, // Define the route for the OrderComponent
+  { path: 'orders', component: OrderComponent, canActivate: [RoleGuard], data: { expectedRole: 'prestateur' } }, // Protect this route with RoleGuard and allow only prestateur
   { path: 'message', component: MessageComponent }, // Define the route for the MessageComponent
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'posts/:id', component: SinglePostComponent }

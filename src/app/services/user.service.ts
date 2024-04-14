@@ -18,13 +18,25 @@ export class UserService {
     return this.http.post(this.APIBaseUrl, userdata);
   }
 
-  UserLogin(userdata: Usercred): Observable<Userinfo[]> {
-    return this.http.get<Userinfo[]>(this.APIBaseUrl + '?username=' + userdata.username + '&password=' + userdata.password);
+  UserLogin(userdata: Usercred): Observable<{ user: Userinfo | null; isBanned: boolean }> {
+    return this.http.get<Userinfo[]>(`${this.APIBaseUrl}?username=${userdata.username}&password=${userdata.password}`).pipe(
+      map(users => {
+        const user = users[0];
+        if (user) {
+          const isBanned = !user.status;
+          return { user, isBanned };
+        } else {
+          return { user: null, isBanned: false };
+        }
+      })
+    );
   }
+
 
   Duplicateusername(username: string): Observable<Userinfo[]> {
     return this.http.get<Userinfo[]>(this.APIBaseUrl + '?username=' + username);
   }
+
 
   GetMenubyRole(userrole: string): Observable<Roleaccess[]> {
     return this.http.get<Roleaccess[]>('http://localhost:3000/roleaccess?role=' + userrole);
@@ -60,7 +72,7 @@ export class UserService {
       username: '',
       email: '',
       name: '',
-      phone:'',
+      phone: '',
       role: '',
       status: false
     }
@@ -78,4 +90,16 @@ export class UserService {
       map(users => users[0])
     );
   }
+  banUser(userId: number): Observable<void> {
+    return this.http.put<void>(`${this.APIBaseUrl}/${userId}/ban`, {});
+  }
+
+  unbanUser(userId: number): Observable<void> {
+    return this.http.put<void>(`${this.APIBaseUrl}/${userId}/unban`, {});
+  }
+  updateUser(user: Users): Observable<void> {
+    const url = `${this.APIBaseUrl}/${user.id}`;
+    return this.http.put<void>(url, user);
+  }
+
 }
