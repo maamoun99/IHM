@@ -24,6 +24,7 @@ import { OrderComponent } from './order/order.component';
 import { MessageComponent } from './message/message.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
     MessageComponent,
     CategoryCreateComponent,
     CategoryListComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,9 @@ import { CategoryListComponent } from './category-list/category-list.component';
   ],
   providers: [
     RegistrationService,
-    DatePipe
+    DatePipe,
+    PostListComponent,
+    CategoryListComponent
   ],
   bootstrap: [AppComponent]
 })

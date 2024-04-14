@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/model/post.model';
 import { PostService } from '../services/post.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Observable, switchMap, forkJoin } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
@@ -10,7 +11,9 @@ import { CategoryService } from '../services/category.service'; // Import the Ca
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css']
+  styleUrls: ['./post-list.component.css'],
+  providers: [PostListComponent] // Add PostListComponent as a provider
+
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
@@ -22,37 +25,45 @@ export class PostListComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private postService: PostService,
     private authService: AuthenticationService,
     private categoryService: CategoryService // Inject CategoryService
   ) { }
 
   ngOnInit() {
-    this.userRole$ = this.authService.getUserRole(); // Subscribe to user's role
+    this.userRole$ = this.authService.getUserRole();
     this.authService.getUsername().subscribe(username => {
-      this.currentUser = username; // Get the current user's username
+      this.currentUser = username;
     });
 
-    // Fetch posts and categories concurrently using forkJoin
-    forkJoin({
-      posts: this.postService.getPosts(),
-      categories: this.categoryService.getAllCategories()
-    }).subscribe(({ posts, categories }) => {
-      // Store category names in a map for easy lookup
-      categories.forEach(category => {
-        this.categories[category.id] = category.name;
-      });
-
-      // Assign categories to posts
-      this.posts = posts.map(post => ({
-        ...post,
-        categoryName: this.categories[post.categoryId] || 'Uncategorized' // Assign category name or 'Uncategorized' if not found
-      }));
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['searchQuery'] || '';
+      this.loadPosts();
     });
 
     setTimeout(() => {
       this.showTitle = true;
     }, 500);
+  }
+
+  loadPosts(): void {
+    forkJoin({
+      posts: this.postService.getPosts(),
+      categories: this.categoryService.getAllCategories()
+    }).subscribe(({ posts, categories }) => {
+      categories.forEach(category => {
+        this.categories[category.id] = category.name;
+      });
+
+      this.posts = posts.map(post => ({
+        ...post,
+        categoryName: this.categories[post.categoryId] || 'Uncategorized'
+      }));
+
+      // Filter posts based on search query
+      this.posts = this.filterPosts();
+    });
   }
   deletePost(id: number): void {
     // Fetch the post to be deleted

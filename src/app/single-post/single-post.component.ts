@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 import { Post } from 'src/model/post.model';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/post.service';
+import {Swiper} from 'swiper';
+import { Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-single-post',
@@ -10,13 +14,26 @@ import { PostService } from '../services/post.service';
 })
 export class SinglePostComponent implements OnInit {
   post: Post | undefined;
+  userRole$!: Observable<string>;
+
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
+    const mySwiper = new Swiper('.swiper-container', {
+      // Optional parameters
+      loop: true,
+
+      // If you need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+    this.userRole$ = this.authService.getUserRole();
     this.getPost();
   }
 
