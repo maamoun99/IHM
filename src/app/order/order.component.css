@@ -49,11 +49,16 @@
 /* Style pour le bouton de confirmation */
 .confirm-button {
   background-color: #049c25; /* Couleur de fond */
+  margin-right: 5px;
 }
 
 /* Style pour le bouton de rejet */
 .reject-button {
   background-color: #ff0000; /* Couleur de fond */
+
+}
+.action-button + .action-button {
+  margin-left: 5px;
 }
 
 /* Style pour le bouton au survol */
@@ -61,8 +66,10 @@
   opacity: 0.8;
 }
 .reservations-container {
+  width: 70%;
   margin: 20px auto; /* Centre le conteneur horizontalement et ajoute un espacement autour */
-  max-width: 800px; /* Définit une largeur maximale pour le conteneur */
+  /* max-width: 800px;  */
+  /* Définit une largeur maximale pour le conteneur */
   padding: 20px; /* Ajoute de l'espacement intérieur */
   background-color: #fff; /* Couleur de fond */
   border: 1px solid #ccc; /* Bordure */
@@ -80,17 +87,18 @@
 }
 
 .pagination-button {
-  padding: 8px 12px; /* Ajoute un padding aux boutons */
-  font-size: 14px; /* Taille de la police */
-  background-color: #049c25; /* Couleur de fond */
-  color: #fff; /* Couleur du texte */
-  border: none; /* Supprime la bordure */
+  padding: 5px 10px; /* Réduire le padding pour diminuer la taille */
+  font-size: 12px; /* Réduire la taille de la police */
+  background-color: #ccc; /* Couleur de fond gris */
+  color: #333; /* Couleur du texte gris plus sombre */
+  border: none; /* Supprimer la bordure */
   border-radius: 3px; /* Coins arrondis */
   cursor: pointer; /* Curseur */
-  margin-left: 5px; /* Ajoute un espacement entre les boutons */
- 
+  margin-left: 5px; /* Ajouter un espacement entre les boutons */
+  font-weight: bold;
 }
 
 .pagination-button:hover {
-  background-color: #027a1b; /* Couleur de fond au survol */
+  background-color: #999; /* Couleur de fond gris plus foncé au survol */
+  color: #fff; /* Couleur du texte blanc au survol */
 }

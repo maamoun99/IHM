@@ -1,5 +1,5 @@
 <div class="reservations-container">
-<h2 class="reservations-title">Reservations</h2>
+<h2 class="reservations-title">Orders</h2>
 <table class="reservation-table">
     <thead>
         <tr>
@@ -9,7 +9,7 @@
             <th>Time Start</th>
             <th>Time End</th>
             <th>Message</th>
-            <th>Status</th>
+            <!-- <th>Status</th> -->
             <th>Action</th>
         </tr>
     </thead>
@@ -21,17 +21,17 @@
             <td>{{ reservation.time }}</td>
             <td>{{ reservation.timeEnd }}</td>
             <td>{{ reservation.message }}</td>
-            <td class="reservation-status">
+            <!-- <td class="reservation-status">
               <span *ngIf="reservation.acceptation === true">Accepted</span>
               <span *ngIf="reservation.acceptation === false">Rejected</span>
               <span *ngIf="reservation.acceptation !== true && reservation.acceptation !== false">Pending</span>
-          </td>
+          </td> -->
           <td>
               <button class="action-button confirm-button" (click)="updateAcceptation(reservation.id.toString(), true, reservation.clientId)" *ngIf="reservation.acceptation !== true">Confirm</button>
               <button class="action-button reject-button" (click)="updateAcceptation(reservation.id.toString(), false, reservation.clientId)" *ngIf="reservation.acceptation !== false">Reject</button>
           </td>
           
-            <td class="reservation-status">
+            <!-- <td class="reservation-status">
                 <span *ngIf="reservation.acceptation === true">Accepted</span>
                 <span *ngIf="reservation.acceptation === false">Rejected</span>
                 <span *ngIf="reservation.acceptation !== true && reservation.acceptation !== false">Pending</span>
@@ -39,7 +39,7 @@
             <td>
                 <button class="action-button confirm-button" (click)="updateAcceptation(reservation.id.toString(), true, reservation.clientId)" *ngIf="!reservation.acceptation">Confirm</button>
                 <button class="action-button reject-button" (click)="updateAcceptation(reservation.id.toString(), false, reservation.clientId)" *ngIf="!reservation.acceptation">Reject</button>
-            </td>
+            </td> -->
         </tr>
     </tbody>
 </table>
@@ -49,4 +49,5 @@
   <button class="pagination-button" (click)="previousPage()">Previous</button>
   <button class="pagination-button" (click)="nextPage()">Next</button>
 </div>
+
 </div>
