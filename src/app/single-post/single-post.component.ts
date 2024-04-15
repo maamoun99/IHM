@@ -3,9 +3,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Post } from 'src/model/post.model';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../services/post.service';
-import {Swiper} from 'swiper';
-import { Observable} from 'rxjs';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-single-post',
@@ -15,7 +13,7 @@ import { Observable} from 'rxjs';
 export class SinglePostComponent implements OnInit {
   post: Post | undefined;
   userRole$!: Observable<string>;
-
+  currentImageIndex: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,25 +22,14 @@ export class SinglePostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const mySwiper = new Swiper('.swiper-container', {
-      // Optional parameters
-      loop: true,
-
-      // If you need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
     this.userRole$ = this.authService.getUserRole();
     this.getPost();
   }
 
   getPost(): void {
-    // Retrieve the post ID from the route parameters
     const idString = this.route.snapshot.paramMap.get('id');
     if (idString) {
       const id = parseInt(idString, 10);
-      // Call the postService to fetch the post by ID
       this.postService.getPostById(id).subscribe(
         post => {
           this.post = post;
@@ -51,6 +38,18 @@ export class SinglePostComponent implements OnInit {
           console.error('Error fetching post:', error);
         }
       );
+    }
+  }
+
+  nextImage(): void {
+    if (this.post) {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.post.imageUrl.length;
+    }
+  }
+
+  prevImage(): void {
+    if (this.post) {
+      this.currentImageIndex = (this.currentImageIndex - 1 + this.post.imageUrl.length) % this.post.imageUrl.length;
     }
   }
 }

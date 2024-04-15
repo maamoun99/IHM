@@ -46,20 +46,26 @@ footer {
 }
 
 .contact-input {
-    margin-bottom: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    /* Added margin bottom */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .btn {
     padding: 10px 20px;
-    border: none;
-    background-color: #049c25;
+    background-color: #027a1b;
     color: #fff;
-    font-size: 16px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn:hover {
-    background-color: #037a1d;
+    background-color: #3b5998;
 }
 
 .footer-bottom {

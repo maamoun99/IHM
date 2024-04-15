@@ -1,78 +1,42 @@
 <div *ngIf="post" class="container-fluid body-background">
     <div class="container pt-5">
         <div class="row">
-            <!-- Job Details -->
-            <div class="col-lg-8 job">
-                <div class="card">
+            <div class="col-md-8 job">
+                <div class="card mb-4">
                     <div class="card-body">
-                        <div class="job-header">
-                            <h6>{{ post.title }}</h6>
-                            <a>{{ post.categoryName }}</a>
+                        <h6 style="margin-bottom: 15px; font-size: 24px;">{{ post!.title }}</h6>
+
+                        <p style="font-size: 18px;">Price: {{ post!.price?.toFixed(2) }} DT</p>
+                        <p style="font-size: 18px;">{{ post!.username }}</p>
+
+                        <small style="font-size: 14px;">Few Hours Ago</small>
+                        <div class="text-end">
+                            <button *ngIf="(userRole$ | async) === 'client'"
+                                class="btn btn-outline-primary round-button mx-2" type="button"
+                                [routerLink]="'/reservation'">Apply</button>
+                            <button *ngIf="(userRole$ | async) != 'client'" class="btn btn-primary round-button"
+                                type="button" [routerLink]="'/login'">Login To Apply</button>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p><i class="fa fa-suitcase" aria-hidden="true"></i> {{ post.categoryName }}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p>Price: {{ post.price.toFixed(2) }} DT</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{ post.username }}</p>
+                        <hr>
+                        <div class="mt-4">
+                            <h5 style="font-size: 24px;">Images</h5>
+                            <div class="image-list d-flex justify-content-center align-items-center position-relative">
+                                <button class="arrow-button left-arrow" (click)="prevImage()"><i
+                                        class="fa fa-chevron-left"></i></button>
+                                <div class="image-container">
+                                    <img [src]="post!.imageUrl[currentImageIndex]" height="300" alt="Slide">
+                                </div>
+                                <button class="arrow-button right-arrow" (click)="nextImage()"><i
+                                        class="fa fa-chevron-right"></i></button>
                             </div>
                         </div>
                         <hr>
-                        <div class="row pt-1">
-                            <div class="col-3">
-                                <small>Few Hours Ago</small>
-                            </div>
-                            <div class="col-2 text-end">
-                                <i class="fa fa-bookmark" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-7 text-end">
-                                <button *ngIf="(userRole$ | async) === 'client'"
-                                    class="btn btn-outline-primary round-button mx-2" type="button">Apply</button>
-                                <button *ngIf="(userRole$ | async) != 'client'" class="btn btn-primary round-button"
-                                    type="button">Login To Apply</button>
+                        <div class="mt-4">
+                            <h5 style="font-size: 24px;">Job description</h5>
+                            <div class="p-2" style="font-size: 18px;">
+                                {{ post!.content }}
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Job Description -->
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h5>Job description</h5>
-                        <div class="p-2">
-                            {{ post.content }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4 filter">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="text-center">Reviews</h6>
-                    </div>
-                </div>
-
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h6 class="text-center">Salary Insights</h6>
-                    </div>
-                </div>
-
-                <!-- Swiper Container -->
-                <div class="card mt-3">
-                    <div class="card-body swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" *ngFor="let imageUrl of post.imageUrl">
-                                <img [src]="imageUrl" height="70" alt="Slide">
-                            </div>
-                        </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </div>

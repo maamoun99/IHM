@@ -56,7 +56,7 @@
 }
 
 .login-button:hover {
-  background-color: #166fe5;
+  background-color: #027a1b;
 }
 
 .form-links {
@@ -83,7 +83,7 @@
 .register-button {
   display: inline-block;
   padding: 12px 20px;
-  background-color: rgb(1, 92, 230);
+  background-color: #2747ff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -93,10 +93,26 @@
 }
 
 .register-button:hover {
-  background-color: #36a420;
+  background-color: #2f4df5;
 }
 
 .line-separator {
   margin: 20px 0;
   border-bottom: 1px solid #ccc;
+}
+
+/* Style for the error message container */
+.error-container {
+  background-color: #f8d7da;
+  /* Red background color */
+  color: #721c24;
+  /* Dark red text color */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Style for the error message */
+.error-message {
+  font-weight: bold;
 }

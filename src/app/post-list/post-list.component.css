@@ -1,23 +1,19 @@
-.title {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+.container-fluid {
+    background-color: #f2f2f2;
+    padding: 0;
 }
-
-.title.visible {
-    opacity: 1;
-}
-
 
 .container {
-    max-width: 800px;
+    max-width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
 }
 
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.job {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .search-bar {
@@ -26,111 +22,104 @@
 
 .search-bar input {
     width: 100%;
-    height: 40px;
     padding: 10px;
+    border-radius: 5px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.empty-message {
-    font-style: italic;
-    color: #888;
-}
-
-.post-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.post-item {
-    width: 100%;
-    margin-bottom: 20px;
-    /* Add margin between posts */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    transition: transform 0.3s ease;
-}
-
-.post-item:hover {
-    transform: translateY(-5px);
-}
-
-.post-details {
-    margin-bottom: 15px;
-}
-
-.post-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.post-content {
-    margin-bottom: 10px;
-}
-
-.post-price {
-    font-weight: bold;
-}
-
-.post-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.delete-button,
-.modify-button {
-    padding: 8px 15px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #dc3545;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.delete-button:hover,
-.modify-button:hover {
-    background-color: #c82333;
-}
-
-.create-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.create-button:hover {
-    background-color: #218838;
 }
 
 .orange-button {
-    background-color: rgb(1, 161, 36);
-    color: white;
-    padding: 8px 16px;
+    background-color: #0026ff;
+    color: #fff;
+    margin-bottom: 20px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.orange-button:hover {
-    background-color: rgb(18, 21, 219);
+.empty-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
 }
 
-.post-image {
-    width: 200px;
-    /* Adjust the width of the image */
-    height: auto;
-    /* Automatically adjust the height based on the width */
+.card {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+    height: 500px;
+    /* Set a fixed height for the card */
+    overflow: hidden;
+    /* Hide overflow content */
+}
+
+.card:hover {
+    transform:
+        translateY(-5px);
+    /* Adjust the translateY value as needed */
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.card-text {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 25px;
+    overflow: hidden;
+    /* Hide overflow content */
+    text-overflow: ellipsis;
+    /* Add ellipsis for overflow text */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.compo_logo {
+    border-radius: 20px;
+    width: 100%;
+    height: 200px;
+    /* Adjust the image height */
     object-fit: cover;
-    /* Ensure the image covers the entire space */
+    margin-bottom: 20px;
+}
+
+.text-muted {
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.text-end {
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 30px;
+    }
+
+    .compo_logo {
+        margin-bottom: 20px;
+    }
 }

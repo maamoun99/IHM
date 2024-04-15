@@ -1,12 +1,13 @@
-<!-- <div *ngIf="showBannedMessage" class="banned-message">You are banned. Please contact support for further assistance.
-</div> -->
-
 <div class="header">
   <div>
     <h1 class="title">FastDeal</h1>
     <p class="description">Avec FastDeal, partagez vos compétences <br> et trouvez un travail</p>
   </div>
   <div class="right-container">
+    <!-- Error message container -->
+    <div class="error-container" *ngIf="errorMessage">
+      <div class="error-message">{{ errorMessage }}</div>
+    </div>
     <form (ngSubmit)="login()" class="login-form">
       <div class="form-group">
         <input type="text" id="username" [(ngModel)]="username" name="username" required class="form-input"

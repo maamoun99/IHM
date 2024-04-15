@@ -6,6 +6,7 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { PostService } from '../services/post.service';
 import { Post } from 'src/model/post.model';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -28,10 +29,13 @@ export class ProfilComponent implements OnInit {
   currentUser: Users | null = null;
   userPosts: Post[] = []; // Array to hold user's posts
 
+
   constructor(
     private authService: AuthenticationService,
     private postService: PostService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
+
   ) { }
 
   ngOnInit(): void {
@@ -57,7 +61,21 @@ export class ProfilComponent implements OnInit {
       }
     });
   }
+  modifyPost(post: Post): void {
+    // Check if the current user is the author of the post
 
+    this.postService.getPostById(post.id).subscribe(
+      (retrievedPost: Post) => {
+        // Navigate to the edit route with the retrieved post data
+        this.router.navigate(['/posts/edit', post.id], { state: { post: retrievedPost } });
+      },
+      (error) => {
+        console.error('Error retrieving post:', error);
+        // Optionally, handle the error, e.g., show an error message to the user
+      }
+    );
+
+  }
   openEditProfileDialog(): void {
     const dialogRef = this.dialog.open(EditProfileComponent, {
       width: '400px',

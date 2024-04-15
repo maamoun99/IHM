@@ -23,6 +23,8 @@ export class PostListComponent implements OnInit {
   userRole$!: Observable<string>;
   showTitle: boolean = false;
   currentUser: string = '';
+  currentImageIndex = 0; // Add currentImageIndex property
+  post: Post | null = null; // Add post property
 
   constructor(
     private router: Router,
@@ -35,10 +37,20 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.userRole$ = this.authService.getUserRole();
     this.authService.getUsername().subscribe(username => {
-      this.currentUser = username; // Get the current user's username
+      this.currentUser = username;
     });
 
-    // Fetch posts and categories concurrently using forkJoin
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['searchQuery'] || '';
+      this.loadPosts();
+    });
+
+    setTimeout(() => {
+      this.showTitle = true;
+    }, 500);
+  }
+
+  loadPosts(): void {
     forkJoin({
       posts: this.postService.getPosts(),
       categories: this.categoryService.getAllCategories()
@@ -55,6 +67,14 @@ export class PostListComponent implements OnInit {
       // Filter posts based on search query
       this.posts = this.filterPosts();
     });
+  }
+  prevImage() {
+    this.currentImageIndex = (this.currentImageIndex - 1 + this.post!.imageUrl.length) % this.post!.imageUrl.length;
+  }
+
+  // Define the nextImage() function to navigate to the next image
+  nextImage() {
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.post!.imageUrl.length;
   }
 
   deletePost(id: number): void {

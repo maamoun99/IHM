@@ -1,57 +1,65 @@
 <div class="container-fluid body-background">
     <div class="container pt-3">
-        <div class="row justify-content-center"> <!-- Center the row content horizontally -->
-            
-            <div class="job"> <!-- Adjust column width for large and medium screens -->
+        <div class="row justify-content-center">
+            <div class="job">
                 <div class="search-bar">
-                    <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title...">
+                    <input type="text" [(ngModel)]="searchQuery" placeholder="Search by title..." class="form-control">
                 </div>
-                <button *ngIf="(userRole$ | async) === 'prestateur'" (click)="createNewPost()">Create Post</button>
+                <button *ngIf="(userRole$ | async) === 'prestateur' || (userRole$ | async) === 'admin'"
+                    (click)="createNewPost()" class="orange-button">Create Post</button>
 
                 <div *ngIf="filterPosts().length === 0" class="empty-message">
                     No posts available.
                 </div>
-                <div class="card mb-4" *ngFor="let post of filterPosts()" (click)="viewPost(post.id)">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">{{ post.content | slice:0:150 }}...</p>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                <img *ngIf="post.imageUrl.length > 0" class="compo_logo" height="80" [src]="post.imageUrl[0]" alt="Post Image">
+
+                <!-- Adjusted to wrap every 3 posts in a row -->
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let post of filterPosts(); let i = index;">
+                        <div class="card mb-4" (click)="viewPost(post.id)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="card-title">{{ post.title }}</h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p class="card-text">{{ post.content | slice:0:150 }}...</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <img class="compo_logo" height="200" [src]="post.imageUrl[0]" alt="Post Image">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="card-text"><i class="fa fa-suitcase" aria-hidden="true"></i> {{
+                                            post.categoryName }}</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text">Price: {{ post.price.toFixed(2) }} DT</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <p class="card-text"> {{ post.username }}</p>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col-md-6">
+                                        <small class="text-muted">Few Hours Ago</small>
+                                    </div>
+                                    <div class="col-md-6 text-end">
+                                        <button *ngIf=" (userRole$ | async) === 'admin'" (click)="deletePost(post.id)"
+                                            class="btn btn-danger btn-sm">Delete</button>
+                                        <button *ngIf="(userRole$ | async) === 'admin'" (click)="modifyPost(post)"
+                                            class="btn btn-primary btn-sm">Modify</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p class="card-text"><i class="fa fa-suitcase" aria-hidden="true"></i> {{ post.categoryName }}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="card-text">Price: {{ post.price.toFixed(2) }} DT</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ post.username }}</p>
-                            </div>
-                        </div>
-                        <div class="row pt-2">
-                            <div class="col-md-12">
-                                <p class="card-text text-muted">{{ post.content | slice:0:150 }}...</p>
-                            </div>
-                        </div>
-                        <div class="row pt-2">
-                            <div class="col-md-6">
-                                <small class="text-muted">Few Hours Ago</small>
-                            </div>
-                            <div class="col-md-6 text-end">
-                                <button *ngIf="(userRole$ | async) === 'prestateur' || (userRole$ | async) === 'admin'"
-                                    (click)="deletePost(post.id)" class="btn btn-danger btn-sm">Delete</button>
-                                <button *ngIf="(userRole$ | async) === 'prestateur'" (click)="modifyPost(post)"
-                                    class="btn btn-primary btn-sm">Modify</button>
-                            </div>
-                        </div>                    </div>
+                    </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

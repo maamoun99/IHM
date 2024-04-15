@@ -1,55 +1,78 @@
-.container-fluid.body-background {
-    background-color: #f9f9f9;
-    padding-bottom: 50px;
-    /* Adjust padding as needed */
+/* Custom Styles */
+.container-fluid {
+    padding: 20px;
 }
 
-.job,
-.filter {
+.job {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
     padding: 20px;
 }
 
-.job .card-body,
-.filter .card-body {
-    padding: 20px;
+.card-body {
+    padding: 0;
 }
 
-.job .card-body hr {
-    border-color: #ddd;
-}
-
-.job .card-body h6 {
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.job .card-body p {
-    color: #666;
-}
-
-.job .card-body .row.pt-1 {
-    margin-top: 10px;
-}
-
-.filter .card-body h6 {
-    color: #333;
-    font-weight: bold;
-}
-
-.swiper-container {
-    margin-top: 20px;
-}
-
-.swiper-pagination {
-    position: relative;
-    bottom: 10px;
-}
-
-.round-button {
+.btn-outline-primary.round-button,
+.btn-primary.round-button {
     border-radius: 25px;
-    padding: 8px 20px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.image-list {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.image-container {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+.left-arrow {
+    left: 0;
+}
+
+.right-arrow {
+    right: 0;
+}
+
+.image-list {
+    position: relative;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.arrow-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

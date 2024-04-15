@@ -21,9 +21,9 @@ export class DashboardComponent {
     'Transportation / Logistics',
     'Telecommunications'
   ];;
-  
 
-  constructor(private router: Router,private postListComponent: PostListComponent,private categoryListComponent: CategoryListComponent) { 
+
+  constructor(private router: Router, private postListComponent: PostListComponent, private categoryListComponent: CategoryListComponent) {
     // this.categoryListComponent.categoriesLoaded.subscribe(
     //   (categories: Category[]) => {
     //     this.Categories = categories; // Assign the received categories to a property
@@ -48,5 +48,5 @@ export class DashboardComponent {
         return '';
     }
   }
-  
+
 }
