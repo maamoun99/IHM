@@ -13,10 +13,12 @@ import { RoleGuard } from './services/role.guard'; // Import the RoleGuard
 import { MessageComponent } from './message/message.component'; // Import the MessageComponent
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'posts', component: PostListComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'posts/create', component: PostCreateComponent, canActivate: [RoleGuard], data: { expectedRole: 'prestateur' } }, // Protect this route with RoleGuard
   { path: 'posts/edit/:id', component: PostEditComponent, canActivate: [RoleGuard], data: { expectedRole: 'prestateur' } }, // Protect this route with RoleGuard
   { path: 'profil', component: ProfilComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'orders', component: OrderComponent, canActivate: [RoleGuard], data: { expectedRole: 'prestateur' } }, // Protect this route with RoleGuard and allow only prestateur
   { path: 'message', component: MessageComponent }, // Define the route for the MessageComponent
-  { path: '', redirectTo: '/posts', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'posts/:id', component: SinglePostComponent }
 ];
 

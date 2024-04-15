@@ -26,9 +26,11 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
     PostListComponent,
     PostCreateComponent,
@@ -58,6 +60,8 @@ import { UserListComponent } from './user-list/user-list.component';
     AppRoutingModule,
   ],
   providers: [
+    PostListComponent,
+    CategoryListComponent,
     RegistrationService,
     DatePipe
   ],

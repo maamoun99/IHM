@@ -1,0 +1,66 @@
+/* Add custom styles here */
+
+/* Swiper Styles */
+.swiper-container {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    height: auto;
+    margin-top: -15px;
+    z-index: 10;
+    cursor: pointer;
+    background-color: transparent;
+    color: #007bff;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 30px;
+    font-family: "swiper-icons";
+    text-transform: none !important;
+}
+
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+    outline: none;
+}
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px; /* Adjust the max-height as needed */
+}
+.left-arrow {
+    left: 0;
+  }
+  
+  .right-arrow {
+    right: 0;
+  }
+  .image-list {
+    position: relative;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .arrow-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }

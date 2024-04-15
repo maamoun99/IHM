@@ -1,57 +1,6 @@
 {
   "posts": [
     {
-      "id": "5577",
-      "title": "musicien",
-      "content": "nji na3zeflek ta7t rasek 7ata tor9d",
-      "imageUrl": "",
-      "price": 10,
-      "userId": "fagous"
-    },
-    {
-      "id": "8715",
-      "title": "dazzez",
-      "content": "ndezhoulek wa9t ma t7eb",
-      "imageUrl": "",
-      "price": 20,
-      "userId": "1b53",
-      "username": "fakousa"
-    },
-    {
-      "id": "5850",
-      "title": "Bsekli",
-      "content": "installation gaz lel moutourat ",
-      "imageUrl": "",
-      "price": 20,
-      "userId": "bbdefaf3-2208-4dff-bc22-74dce1cca6ea",
-      "username": "iheb"
-    },
-    {
-      "id": "9090",
-      "title": "mm",
-      "content": "mmù",
-      "imageUrl": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525437/eixqbdtyxwxk8w8kz3d6.jpg",
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525453/hv7zprcehmacxg5xxhq4.jpg",
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525467/r8n2hkzz03b2baozhv4n.jpg",
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712525483/nh7oppq3wx2pye6csbfy.jpg"
-      ],
-      "price": 1,
-      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
-      "username": "fagous"
-    },
-    {
-      "id": "7562",
-      "title": "fsdfsd",
-      "content": "ggere",
-      "imageUrl": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1712876167/sez5jljt96hazre0zkq1.png"
-      ],
-      "price": 20,
-      "userId": "1c282b51-5956-41c2-9e39-7ae5ecbf87a3",
-      "username": "mahmoud"
-    },
-    {
       "id": "2060",
       "title": "neww",
       "content": "aaaa",
@@ -62,6 +11,41 @@
       "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
       "username": "fagous",
       "categoryId": "6829",
+      "categoryName": ""
+    },
+    {
+      "id": "1712",
+      "title": "yalla louziya",
+      "content": "louziya en tres bon etat mtaa  l3id",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713139520/rca82iydebkqkgensvse.png",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713139522/meqhmbgxqlkmuomnr4xt.png",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713139523/xuyt6vprxj2hgfk0vrs2.png",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713139523/bopr1rptomztsbdbyn3l.png",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713139525/z5x03jbjo5fa60znfylh.png"
+      ],
+      "price": 230,
+      "userId": "66b5ec04-a8f3-462e-bc14-ef32177a12b8",
+      "username": "fagous",
+      "categoryId": "2925",
+      "categoryName": ""
+    },
+    {
+      "id": 8703,
+      "title": "loooba",
+      "content": "jouer en bonne etat",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141579/mwpq8n4xcq8oee648t5j.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141580/cpbtynk6ouqqcdipc1lm.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141580/qzhomdcssvi9f3wgcjgl.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141622/xi7nxzpzqmumves8blbj.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141622/nrqykmdyi1pjy2dgmyss.jpg",
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141623/j4oan6btxmdcmu29gsch.jpg"
+      ],
+      "price": 20,
+      "userId": "1b53",
+      "username": "fakousa",
+      "categoryId": "3959",
       "categoryName": ""
     }
   ],
@@ -83,7 +67,8 @@
       "password": "123",
       "role": "client",
       "phone": "55323216",
-      "status": true
+      "status": true,
+      "gender": "home"
     },
     {
       "id": "08ed",
@@ -102,7 +87,7 @@
       "role": "prestateur",
       "phone": "24250765",
       "status": false,
-      "gender": "home"
+      "gender": "F7al"
     },
     {
       "id": "f0d82b22-ef68-4103-b844-4743f16c9f66",
@@ -129,6 +114,15 @@
       "password": "123",
       "role": "admin",
       "phone": "55323216",
+      "status": true
+    },
+    {
+      "id": "d86ff9fd-d680-48a1-a63e-e91093cc1e24",
+      "username": "ihebdhouib@gmail.com",
+      "email": "iheb@gmail.com",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "26720354",
       "status": true
     }
   ],
@@ -330,16 +324,6 @@
       "time": "23:04",
       "timeEnd": "12:34",
       "message": "hellouu",
-      "acceptation": ""
-    },
-    {
-      "id": "e6fa",
-      "clientId": "kiki",
-      "username": "fakousa",
-      "date": "213123-05-31",
-      "time": "04:45",
-      "timeEnd": "04:05",
-      "message": "efQGQDFQFDG",
       "acceptation": ""
     }
   ],

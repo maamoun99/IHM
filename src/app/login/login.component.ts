@@ -25,10 +25,10 @@ export class LoginComponent {
         (response) => {
           if (response.user) {
             if (response.role === 'client') {
-              this.router.navigate(['/reservation']);
+              this.router.navigate(['/profil']);
             } else if (response.role === 'prestateur') {
-              this.router.navigate(['/reservation']);
-            }else if (response.role === 'admin'){
+              this.router.navigate(['/profil']);
+            } else if (response.role === 'admin') {
               this.router.navigate(['/profil']);
             }
 
