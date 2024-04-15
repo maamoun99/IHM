@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/model/post.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../services/post.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-post-edit',
@@ -9,6 +10,7 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent implements OnInit {
+  imageUrlList: string[] = [];
   postId: number | undefined;
   post: Post = {
     title: '',
@@ -24,6 +26,7 @@ export class PostEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private http: HttpClient, // Inject AuthenticationService
     private postService: PostService
   ) { }
 
@@ -35,6 +38,30 @@ export class PostEditComponent implements OnInit {
       this.fetchPost(this.postId);
     } else {
       this.router.navigate(['/posts']);
+    }
+  }
+  previewImages(event: any): void {
+    this.imageUrlList = [];
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'dalidd');
+        this.http.post<any>('https://api.cloudinary.com/v1_1/dexzirjuk/image/upload', formData)
+          .subscribe(
+            (res) => {
+              this.imageUrlList.push(res.secure_url);
+              console.log(res.secure_url);
+              // Push each URL individually to newPost.imageUrl
+              this.post.imageUrl.push(res.secure_url);
+            },
+            (err) => {
+              console.error('Erreur lors du téléchargement de l\'image sur Cloudinary : ', err);
+            }
+          );
+      }
     }
   }
 

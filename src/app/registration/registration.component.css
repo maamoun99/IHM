@@ -56,11 +56,11 @@ h2 {
 }
 
 .register-button:hover {
-    background-color: #166fe5;
+    background-color: #027a1b;
 }
 
 .cancel-button {
-    background-color: #f56363;
+    background-color: #f44336;
     color: #000;
     border: none;
     border-radius: 5px;
@@ -70,5 +70,5 @@ h2 {
 }
 
 .cancel-button:hover {
-    background-color: #bbb;
+    background-color: #d32f2f;
 }

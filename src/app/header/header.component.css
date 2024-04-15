@@ -1,7 +1,19 @@
 header {
+    display: flex;
+    justify-content: space-between;
+    /* Align items to the start and end of the header */
+    align-items: center;
+    /* Center items vertically */
     background-color: #049c25;
     color: #fff;
     padding: 10px 20px;
+}
+
+.logo {
+    font-size: 30px;
+    /* Adjust the size of the logo */
+    font-weight: bold;
+    /* Make the logo text bold */
 }
 
 nav ul {
@@ -23,4 +35,11 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #ccc;
+}
+
+.logo a {
+    text-decoration: none;
+    /* Remove underline */
+    color: #fff;
+    /* Set text color to white */
 }

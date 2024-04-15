@@ -34,28 +34,32 @@
 .swiper-button-prev:focus {
     outline: none;
 }
+
 .image-container img {
     max-width: 100%;
     height: auto;
-    max-height: 450px; /* Adjust the max-height as needed */
+    max-height: 450px;
+    /* Adjust the max-height as needed */
 }
+
 .left-arrow {
     left: 0;
-  }
-  
-  .right-arrow {
+}
+
+.right-arrow {
     right: 0;
-  }
-  .image-list {
+}
+
+.image-list {
     position: relative;
-  }
-  
-  .image-container {
+}
+
+.image-container {
     position: relative;
     display: inline-block;
-  }
-  
-  .arrow-button {
+}
+
+.arrow-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -63,4 +67,4 @@
     border: none;
     outline: none;
     cursor: pointer;
-  }
+}
