@@ -99,7 +99,8 @@
       "password": "123",
       "role": "prestateur",
       "phone": "26720354",
-      "status": true
+      "status": true,
+      "gender": "homme"
     },
     {
       "id": "d453c8c0-60e6-4353-bd7a-62f154654d70",
@@ -128,6 +129,16 @@
       "password": "123",
       "role": "client",
       "phone": "22000333",
+      "status": true
+    },
+    {
+      "id": "fb1df4f7-9ddc-45b1-bb67-4ac3e41f5eb0",
+      "username": "kiki",
+      "email": "morad@gmail.com",
+      "password": "123",
+      "role": "prestateur",
+      "phone": "54771333",
+      "gender": "Homme",
       "status": true
     }
   ],

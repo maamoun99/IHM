@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { v4 as uuidv4 } from 'uuid'; // Import the uuidv4 function
+import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../services/registration.service';
 
@@ -14,6 +14,7 @@ export class RegistrationComponent {
   password = '';
   role = 'client';
   phone = '';
+  gender = ''; // Add gender property
   errorMessage = '';
 
   constructor(
@@ -22,22 +23,21 @@ export class RegistrationComponent {
   ) { }
 
   register(): void {
-    const userId = uuidv4(); // Generate a random UUID for the user
+    const userId = uuidv4();
     this.registrationService.register({
-      id: userId, // Assign the generated UUID as the user's ID
+      id: userId,
       username: this.username,
       email: this.email,
       password: this.password,
       role: this.role,
       phone: this.phone,
+      gender: this.gender, // Include gender property
       status: true
     }).subscribe(
       () => {
-        // Redirect to login page after successful registration
         this.router.navigate(['/login']);
       },
       error => {
-        // Display error message if registration fails
         this.errorMessage = 'Registration failed. Please try again.';
       }
     );

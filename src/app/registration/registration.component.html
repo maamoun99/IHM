@@ -17,6 +17,14 @@
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" [(ngModel)]="phone" class="form-input" required>
     </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" [(ngModel)]="gender" class="form-input" required>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+            <option value="si maido">Si maido</option>
+        </select>
+    </div>
     <div class="form-group radio-group">
         <label>Role</label>
         <div class="radio-option">
