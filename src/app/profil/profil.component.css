@@ -1,18 +1,62 @@
 .profile-container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .personal-info-box {
+    width: 80%;
     margin-bottom: 40px;
     padding: 20px;
     background-color: #f0f2f5;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.personal-details {
+    display: flex;
+}
+
+.info-left {
+    flex: 1;
+}
+
+.info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-profile-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #027a1b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-profile-button:hover {
+    background-color: #3b5998;
+}
+
 
 .user-posts-box {
     padding: 20px;
@@ -24,9 +68,7 @@
     margin-bottom: 20px;
 }
 
-.personal-details {
-    margin-bottom: 20px;
-}
+
 
 .personal-details p {
     margin-bottom: 10px;

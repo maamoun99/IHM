@@ -14,15 +14,29 @@
         </div>
 
         <!-- Image URL -->
-        <div class="form-group">
-            <label for="imageUrl" class="label">Image URL</label>
-            <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="post.imageUrl" class="input" required>
+        <div class="form-group file-upload">
+            <label for="customFile" class="label">Images:</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" accept="image/*" multiple
+                    formControlName="image" (change)="previewImages($event)">
+                <label class="custom-file-label" for="customFile">Choose images</label>
+            </div>
+            <div class="image-container" *ngIf="imageUrlList.length > 0">
+                <ng-container *ngFor="let imageUrl of imageUrlList; let i = index">
+                    <img [src]="imageUrl" alt="Image Preview" class="preview-image">
+                </ng-container>
+            </div>
         </div>
 
         <!-- Price -->
         <div class="form-group">
             <label for="price" class="label">Price</label>
-            <input type="number" id="price" name="price" [(ngModel)]="post.price" class="input" required>
+            <div class="input-group">
+                <input type="number" id="price" name="price" [(ngModel)]="post.price" class="form-control" required>
+                <div class="input-group-append">
+                    <span class="input-group-text">DT</span>
+                </div>
+            </div>
         </div>
 
         <!-- Submit Button -->

@@ -11,11 +11,14 @@
 
                         <small style="font-size: 14px;">Few Hours Ago</small>
                         <div class="text-end">
-                            <button *ngIf="(userRole$ | async) === 'client'"
+                            <button
+                                *ngIf="(userRole$ | async) === 'client' || (userRole$ | async) === 'prestateur' || (userRole$ | async) === 'admin'"
                                 class="btn btn-outline-primary round-button mx-2" type="button"
                                 [routerLink]="'/reservation'">Apply</button>
-                            <button *ngIf="(userRole$ | async) != 'client'" class="btn btn-primary round-button"
-                                type="button" [routerLink]="'/login'">Login To Apply</button>
+                            <button
+                                *ngIf="(userRole$ | async) !== 'client' && (userRole$ | async) !== 'prestateur' && (userRole$ | async) !== 'admin'"
+                                class="btn btn-primary round-button" type="button" [routerLink]="'/login'">Login To
+                                Apply</button>
                         </div>
                         <hr>
                         <div class="mt-4">

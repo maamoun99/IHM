@@ -17,6 +17,7 @@ import { Role } from 'src/model/user.model'; // Assuming Role is imported from u
 
 })
 export class PostListComponent implements OnInit {
+
   posts: Post[] = [];
   categories: { [key: string]: string } = {};
   searchQuery: string = '';

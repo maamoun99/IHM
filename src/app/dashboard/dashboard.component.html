@@ -1,19 +1,22 @@
 <!-- Banner -->
-<div id="banner" class="with-transparent-header parallax background" style="background-image: url(../../assets/img/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330" data-diff="300">
+<div id="banner" class="with-transparent-header parallax background"
+  style="background-image: url(../../assets/img/banner-home-02.jpg)" data-img-width="2000" data-img-height="1330"
+  data-diff="300">
   <div class="container">
-      <div class="sixteen columns">
-          <div class="search-container">
-              <!-- Form -->
-              <h2>Find job</h2>
-              <input type="text" class="ico-01" [(ngModel)]="searchKeyword" placeholder="job title, keywords or company name" />
-              <input type="text" class="ico-02" placeholder="city, province or region" />
-              <button (click)="searchPosts(searchKeyword)"><i class="fa fa-search"></i></button>
-              <!-- Announce -->
-              <div class="announce">
-                  We have over <strong>15,000</strong> job offers for you!
-              </div>
-          </div>
+    <div class="sixteen columns">
+      <div class="search-container">
+        <!-- Form -->
+        <h2>Find Services</h2>
+        <input type="text" class="ico-01" [(ngModel)]="searchKeyword"
+          placeholder="job title, keywords or company name" />
+        <input type="text" class="ico-02" placeholder="city, province or region" />
+        <button (click)="searchPosts(searchKeyword)"><i class="fa fa-search"></i></button>
+        <!-- Announce -->
+        <div class="announce">
+          We have over <strong>15,000</strong> job offers for you!
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
@@ -27,7 +30,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <a (click)="searchPosts(category)">
-                <i [class]="getIconClass(category)"></i> {{ category }} 
+                <i [class]="getIconClass(category)"></i> {{ category }}
               </a>
             </div>
           </div>
@@ -36,5 +39,3 @@
     </div>
   </div>
 </div>
-
-

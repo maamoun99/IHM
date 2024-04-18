@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { tap, map, catchError } from 'rxjs/operators';
 import { Users } from 'src/model/user.model';
 
 @Injectable({
   providedIn: 'root'
-
 })
 export class AuthenticationService {
   private apiUrl = 'http://localhost:3000/users';
@@ -19,9 +16,12 @@ export class AuthenticationService {
   private usernameSource = new BehaviorSubject<string>('');
   username$ = this.usernameSource.asObservable();
   private idSource = new BehaviorSubject<string>('');
-  id$ = this.idSource.asObservable(); // Corrected to use idSource
+  id$ = this.idSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    // Initialize authentication state from browser storage on service instantiation
+    this.loadAuthStateFromStorage();
+  }
 
   login(credentials: { username: string, password: string }): Observable<{ user: any, role: string }> {
     return this.http.get<any>(`${this.apiUrl}?username=${credentials.username}&password=${credentials.password}`)
@@ -29,28 +29,18 @@ export class AuthenticationService {
         map(response => {
           if (response.length > 0) {
             const user = response[0];
-            this.isAuthenticatedSource.next(true);
-            this.roleSource.next(user.role);
-            this.usernameSource.next(user.username);
-            this.idSource.next(user.id); // Update the user ID
+            this.setAuthState(user); // Update authentication state on successful login
             return { user, role: user.role };
           } else {
-            this.isAuthenticatedSource.next(false);
-            this.roleSource.next('');
-            this.usernameSource.next('');
-            this.idSource.next(''); // Clear the user ID
+            this.clearAuthState(); // Clear authentication state if login fails
             return { user: null, role: '' };
           }
         })
       );
   }
 
-
   logout(): void {
-    this.isAuthenticatedSource.next(false);
-    this.roleSource.next('');
-    this.usernameSource.next('');
-    this.idSource.next('');
+    this.clearAuthState();
   }
 
   isAuthenticated(): Observable<boolean> {
@@ -60,6 +50,31 @@ export class AuthenticationService {
   getUserRole(): Observable<string> {
     return this.role$;
   }
+  private loadAuthStateFromStorage(): void {
+    const userJson = localStorage.getItem('currentUser');
+    if (userJson !== null) {
+      const user = JSON.parse(userJson);
+      this.setAuthState(user);
+    }
+  }
+
+
+  private setAuthState(user: any): void {
+    this.isAuthenticatedSource.next(true);
+    this.roleSource.next(user.role);
+    this.usernameSource.next(user.username);
+    this.idSource.next(user.id);
+    localStorage.setItem('currentUser', JSON.stringify(user)); // Store user data in localStorage
+  }
+
+  private clearAuthState(): void {
+    this.isAuthenticatedSource.next(false);
+    this.roleSource.next('');
+    this.usernameSource.next('');
+    this.idSource.next('');
+    localStorage.removeItem('currentUser'); // Remove user data from localStorage
+  }
+
   fetchCurrentUser(userId: string): Observable<Users> {
     // Assuming you have an API endpoint to fetch current user info
     // Adjust the URL to match your backend

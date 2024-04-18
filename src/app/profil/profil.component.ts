@@ -105,4 +105,5 @@ export class ProfilComponent implements OnInit {
       console.error('Failed to delete post:', error);
     });
   }
+
 }

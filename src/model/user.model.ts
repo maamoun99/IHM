@@ -2,16 +2,17 @@ import { EntityState } from "@ngrx/entity";
 
 export interface Users {
     id: string;
-    username: string,
-    password: string,
-    name: string,
-    email: string,
-    phone: string,
-    role: string,
-    gender: string,
-    status: boolean
-}
+    username: string;
+    password: string;
+    name: string;
+    email: string;
+    phone: string;
+    role: string;
+    gender: string;
+    status: boolean;
+    img: any[];
 
+}
 
 
 
@@ -20,7 +21,7 @@ export interface Userinfo {
     username: string,
     name: string,
     email: string,
-    phone: string; 
+    phone: string;
     role: string,
     status: boolean
 }

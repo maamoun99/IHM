@@ -5,8 +5,10 @@
         <li *ngFor="let category of categories" class="category-item">
             <span>{{ category.name }}</span>
             <div class="category-buttons">
-                <button (click)="editCategory(category.id)" class="btn btn-info">Edit</button>
-                <button (click)="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
+                <button (click)="editCategory(category.id)" class="btn btn-info"> <i class="fas fa-edit"></i>
+                </button>
+                <button (click)="deleteCategory(category.id)" class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+                </button>
             </div>
         </li>
     </ul>

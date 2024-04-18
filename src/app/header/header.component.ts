@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
   selector: 'app-header',
@@ -11,7 +10,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
   userRole: string = '';
-  showBannedMessage = false; // Define showBannedMessage property
+  username: string = ''; // Add username property
 
   constructor(private authService: AuthenticationService, private router: Router) { }
 
@@ -21,6 +20,10 @@ export class HeaderComponent implements OnInit {
       if (isAuthenticated) {
         this.authService.getUserRole().subscribe(role => {
           this.userRole = role;
+          // Fetch username if the user is authenticated
+          this.authService.getUsername().subscribe(username => {
+            this.username = username;
+          });
         });
       }
     });

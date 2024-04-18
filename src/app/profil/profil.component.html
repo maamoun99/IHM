@@ -1,15 +1,25 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <div class="profile-container" *ngIf="currentUser">
     <!-- Personal Information -->
     <div class="personal-info-box">
         <h2 class="reservations-title">Welcome to your profile {{ currentUser.username }}</h2>
         <div class="personal-details">
-            <p><strong>Email : </strong> {{ currentUser.email }}</p>
-            <p><strong>Gender : </strong> {{ currentUser.gender }}</p>
-            <p><strong>Role : </strong> {{ currentUser.role }}</p>
-            <p><strong>Phone : </strong> {{ currentUser.phone }}</p>
-            <button class="edit-profile-button" (click)="openEditProfileDialog()">Edit Profile</button>
+            <div class="info-left">
+                <p><strong>Email : </strong> {{ currentUser.email }}</p>
+                <p><strong>Gender : </strong> {{ currentUser.gender }}</p>
+                <p><strong>Role : </strong> {{ currentUser.role }}</p>
+                <p><strong>Phone : </strong> {{ currentUser.phone }}</p>
+            </div>
+            <div class="info-right">
+                <div class="profile-image-container">
+                    <img class="profile-image" height="200" [src]="currentUser.img[0]" alt="Profile Image">
+                </div>
+                <button class="edit-profile-button" (click)="openEditProfileDialog()"> <i class="fas fa-edit"></i>
+                </button>
+            </div>
         </div>
     </div>
+
 
     <!-- Posts Section -->
     <div class="user-posts-box">
@@ -26,9 +36,14 @@
                             <!-- Add more details of the post as needed -->
                         </div>
                         <div class="post-actions">
-                            <button class="edit-button" (click)="modifyPost(post)">Edit</button>
-                            <button class="delete-button">Delete</button>
+                            <button class="edit-button" (click)="modifyPost(post)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="delete-button">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </div>
+
                     </div>
                 </ng-container>
             </div>

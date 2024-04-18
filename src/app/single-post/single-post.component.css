@@ -1,54 +1,46 @@
-/* Custom Styles */
-.container-fluid {
-    padding: 20px;
-}
+/* Add custom styles here */
 
-.job {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-}
-
-.card {
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Swiper Styles */
+.swiper-container {
     margin-bottom: 20px;
-    padding: 20px;
+    width: 100%;
 }
 
-.card-body {
-    padding: 0;
+.swiper-slide img {
+    width: 100%;
 }
 
-.btn-outline-primary.round-button,
-.btn-primary.round-button {
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-.image-list {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.image-container {
-    position: relative;
-    max-width: 100%;
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: auto;
     height: auto;
-    max-height: 450px;
-    overflow: hidden;
+    margin-top: -15px;
+    z-index: 10;
+    cursor: pointer;
+    background-color: transparent;
+    color: #007bff;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 30px;
+    font-family: "swiper-icons";
+    text-transform: none !important;
+}
+
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+    outline: none;
 }
 
 .image-container img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    max-height: 450px;
+    /* Adjust the max-height as needed */
 }
-
 
 .left-arrow {
     left: 0;

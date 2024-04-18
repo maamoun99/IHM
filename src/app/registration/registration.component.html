@@ -18,6 +18,17 @@
         <input type="tel" id="phone" [(ngModel)]="phone" class="form-input" required>
     </div>
     <div class="form-group radio-group">
+        <label>Gender</label>
+        <div class="radio-option">
+            <input type="radio" required>
+            <label for="client">Homme</label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" required>
+            <label for="prestateur">Femme</label>
+        </div>
+    </div>
+    <div class="form-group radio-group">
         <label>Role</label>
         <div class="radio-option">
             <input type="radio" name="role" [(ngModel)]="role" value="client" id="client" required>
@@ -26,6 +37,17 @@
         <div class="radio-option">
             <input type="radio" name="role" [(ngModel)]="role" value="prestateur" id="prestateur" required>
             <label for="prestateur">Prestateur</label>
+        </div>
+        <div class="form-group file-upload">
+            <label for="customFile">Images:</label>
+            <input type="file" class="custom-file-input" id="customFile" accept="image/*" multiple
+                formControlName="image" (change)="previewImages($event)">
+            <label class="custom-file-label" for="customFile">Choose images</label>
+            <div class="image-container" *ngIf="img.length > 0">
+                <ng-container *ngFor="let imageUrl of img; let i = index">
+                    <img [src]="imageUrl" alt="Image Preview" class="preview-image">
+                </ng-container>
+            </div>
         </div>
     </div>
     <button (click)="register()" class="register-button">Register</button>
