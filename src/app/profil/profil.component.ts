@@ -27,7 +27,9 @@ import { Router } from '@angular/router';
 })
 export class ProfilComponent implements OnInit {
   currentUser: Users | null = null;
+  tab1:any[]=[];
   userPosts: Post[] = []; // Array to hold user's posts
+
 
 
   constructor(
@@ -35,11 +37,15 @@ export class ProfilComponent implements OnInit {
     private postService: PostService,
     private dialog: MatDialog,
     private router: Router,
+    private AS: PostService,     
+
 
   ) { }
 
   ngOnInit(): void {
+   
     // Fetch the current user's information
+    this.getPost()
     this.authService.getUserID().subscribe(userId => {
       // Check if the user ID is available
       if (userId) {
@@ -60,6 +66,12 @@ export class ProfilComponent implements OnInit {
         console.error('User ID not available');
       }
     });
+  }
+  getPost() {
+   this.postService.getPosts().subscribe((r)=>
+  {
+    
+  })
   }
   modifyPost(post: Post): void {
     // Check if the current user is the author of the post
@@ -95,15 +107,10 @@ export class ProfilComponent implements OnInit {
     // You can open a dialog similar to the edit profile dialog
   }
 
-  deletePost(postId: number): void {
-    // Implement the logic to delete the post
-    // Call the deletePost method from the PostService
+  delete(postId: number): void {
+    console.log(postId)
     this.postService.deletePost(postId).subscribe(() => {
-      // Remove the deleted post from the userPosts array
-      this.userPosts = this.userPosts.filter(post => post.id !== postId);
-    }, error => {
-      console.error('Failed to delete post:', error);
-    });
-  }
+      this.router.navigate(['/posts'])
+    })}
 
 }

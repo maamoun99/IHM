@@ -1,31 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/model/post.model';
 import { PostService } from '../services/post.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
-import { Category } from 'src/model/category.model';
 import { CategoryService } from '../services/category.service';
-import { Role } from 'src/model/user.model'; // Assuming Role is imported from user.model
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.css'],
-  providers: [PostListComponent] // Add PostListComponent as a provider
-
+  styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   categories: { [key: string]: string } = {};
   searchQuery: string = '';
-  userRole$!: Observable<string>;
+  locationQuery: string = '';
   showTitle: boolean = false;
   currentUser: string = '';
-  currentImageIndex = 0; // Add currentImageIndex property
-  post: Post | null = null; // Add post property
+  currentImageIndex = 0;
+  post: Post | null = null;
+  userRole$!: Observable<string>;
 
   constructor(
     private router: Router,
@@ -37,25 +34,16 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.userRole$ = this.authService.getUserRole();
-    this.authService.getUsername().subscribe(username => {
-      this.currentUser = username;
-    });
-
-    this.route.queryParams.subscribe(params => {
-      this.searchQuery = params['searchQuery'] || '';
-      this.loadPosts();
-    });
-
-    setTimeout(() => {
-      this.showTitle = true;
-    }, 500);
-  }
-
-  loadPosts(): void {
-    forkJoin({
-      posts: this.postService.getPosts(),
-      categories: this.categoryService.getAllCategories()
-    }).subscribe(({ posts, categories }) => {
+    this.route.queryParams.pipe(
+      switchMap(params => {
+        this.searchQuery = params['searchQuery'] || '';
+        this.locationQuery = params['param2'] || '';
+        return forkJoin({
+          posts: this.postService.getPosts(),
+          categories: this.categoryService.getAllCategories()
+        });
+      })
+    ).subscribe(({ posts, categories }) => {
       categories.forEach(category => {
         this.categories[category.id] = category.name;
       });
@@ -65,77 +53,81 @@ export class PostListComponent implements OnInit {
         categoryName: this.categories[post.categoryId] || 'Uncategorized'
       }));
 
-      // Filter posts based on search query
       this.posts = this.filterPosts();
     });
+
+    this.authService.getUserRole().pipe(
+      switchMap(userRole => this.authService.getUsername().pipe(
+        switchMap(username => {
+          this.currentUser = username;
+          return this.route.queryParams;
+        })
+      ))
+    ).subscribe(params => {
+      console.log('User Role:', params['role']);
+    });
+
+    setTimeout(() => {
+      this.showTitle = true;
+    }, 500);
   }
+
   prevImage() {
     this.currentImageIndex = (this.currentImageIndex - 1 + this.post!.imageUrl.length) % this.post!.imageUrl.length;
   }
 
-  // Define the nextImage() function to navigate to the next image
   nextImage() {
     this.currentImageIndex = (this.currentImageIndex + 1) % this.post!.imageUrl.length;
   }
 
   deletePost(id: number): void {
-    this.postService.getPostById(id).subscribe(post => {
-      this.userRole$.subscribe(role => {
-        if (post.userId === this.currentUser || role === 'admin') {
-          this.postService.deletePost(id).subscribe(
-            () => {
-              console.log('Post deleted successfully');
-              this.posts = this.posts.filter(p => p.id !== id);
-              this.router.navigate(['/posts']);
-            },
-            error => {
-              if (error.status === 404) {
-                console.error('Post not found. Unable to delete.');
-              } else {
-                console.error('Error deleting post:', error);
-              }
-            }
-          );
+    this.postService.getPostById(id).pipe(
+      switchMap(post => this.authService.getUserRole().pipe(
+        switchMap(role => {
+          if (post.userId === this.currentUser || role === 'admin') {
+            return this.postService.deletePost(id);
+          } else {
+            console.error('You are not authorized to delete this post.');
+            return [];
+          }
+        })
+      ))
+    ).subscribe(
+      () => {
+        console.log('Post deleted successfully');
+        this.posts = this.posts.filter(p => p.id !== id);
+        this.router.navigate(['/posts']);
+      },
+      error => {
+        if (error.status === 404) {
+          console.error('Post not found. Unable to delete.');
         } else {
-          console.error('You are not authorized to delete this post.');
+          console.error('Error deleting post:', error);
         }
-      });
-    });
+      }
+    );
   }
-  modifyPost(post: Post): void {
-    // Check if the current user is the author of the post
 
+  modifyPost(post: Post): void {
     this.postService.getPostById(post.id).subscribe(
       (retrievedPost: Post) => {
-        // Navigate to the edit route with the retrieved post data
         this.router.navigate(['/posts/edit', post.id], { state: { post: retrievedPost } });
       },
       (error) => {
         console.error('Error retrieving post:', error);
-        // Optionally, handle the error, e.g., show an error message to the user
       }
     );
-
-  }
-
-  getPosts(): void {
-    this.postService.getPosts()
-      .subscribe(posts => {
-        this.posts = posts;
-      });
   }
 
   createNewPost(): void {
-    this.router.navigate(['/posts/create']); // Convert post.id to a string before navigating
-
+    this.router.navigate(['/posts/create']);
   }
 
   viewPost(id: number): void {
     if (id > 0) {
-      this.router.navigate(['/posts', id]); // Redirect to the single post view
+      this.router.navigate(['/posts', id]);
     } else {
       console.error('Invalid post ID for viewing');
-      // Optionally, you can handle this case by navigating to a default route or showing an error message
     }
   }
 
@@ -149,19 +141,27 @@ export class PostListComponent implements OnInit {
     });
   }
 
-
-
   filterPosts(): Post[] {
-    if (!this.searchQuery) {
-      return this.posts; // If search query is empty, return all posts
+    var filtred: Post[] = [];
+    if (this.searchQuery) {
+      filtred = this.posts.filter(post =>
+        post.categoryName?.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     } else {
-      const searchTerm = this.searchQuery.toLowerCase();
-      return this.posts.filter(post =>
-        post.categoryName.toLowerCase().includes(searchTerm)
+      filtred = this.posts;
+    }
+
+    if (this.locationQuery) {
+      filtred = filtred.filter(post =>
+        post.localisation?.toLowerCase().includes(this.locationQuery.toLowerCase())
       );
     }
+    return filtred;
   }
+  
   navigateToReservationForm(postTitle: string): void {
     this.router.navigate(['/reservation-form', postTitle]);
   }
+
+  
 }

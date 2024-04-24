@@ -14,7 +14,7 @@ import { CategoryService } from '../services/category.service';
 })
 export class PostCreateComponent implements OnInit {
   imageUrlList: string[] = [];
-  newPost: Post = {
+  newPost: any = {
     title: '',
     content: '',
     imageUrl: [], // Initialize as an empty array
@@ -22,12 +22,22 @@ export class PostCreateComponent implements OnInit {
     userId: '',
     username: '',
     categoryId: '', // Add categoryId property
-    id: this.generateRandomId() // Generate a random ID
-    ,
-    categoryName: ''
+    // this.generateRandomId() // Generate a random ID
+    
+
+    categoryName: '',
+    localisation: ''
   };
   selectedFile: File | null = null;
   categories: Category[] = []; // Array to store categories
+  localisations: string[] = [
+    'New York',
+    'London',
+    'Paris',
+    'Tokyo',
+    'Berlin',
+    // Add more localisations as needed
+  ];
 
   constructor(
     private router: Router,
@@ -53,10 +63,7 @@ export class PostCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.selectedFile) {
-      // Perform file upload here if needed
-      // Then update the imageUrl field of newPost with the uploaded file URL
-    }
+    
 
     this.postService.createPost(this.newPost)
       .subscribe(() => {
@@ -69,10 +76,10 @@ export class PostCreateComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
 
-  generateRandomId(): number {
+//  generateRandomId(): number {
     // Generate a random number between 1000 and 9999
-    return Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  }
+ //   return Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+ // }
 
   previewImages(event: any): void {
     this.imageUrlList = [];
@@ -92,7 +99,7 @@ export class PostCreateComponent implements OnInit {
               this.newPost.imageUrl.push(res.secure_url);
             },
             (err) => {
-              console.error('Erreur lors du téléchargement de l\'image sur Cloudinary : ', err);
+              console.error('Error uploading image to Cloudinary : ', err);
             }
           );
       }

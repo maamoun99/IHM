@@ -9,5 +9,14 @@ export interface Post {
     username?: string;
     categoryId: string;// Add categoryId property
     categoryName: string; // Add categoryName property
+    localisation: string;
 
 }
+export const LOCALISATIONS: string[] = [
+    'New York',
+    'London',
+    'Paris',
+    'Tokyo',
+    'Berlin',
+    // Add more localisations as needed
+];

@@ -46,6 +46,12 @@ export class AuthenticationService {
   isAuthenticated(): Observable<boolean> {
     return this.isAuthenticated$;
   }
+  clearUserData(): void {
+    // Implement logic to clear any authentication tokens or user data
+    // For example, you can clear tokens from local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('userdata');
+  }
 
   getUserRole(): Observable<string> {
     return this.role$;

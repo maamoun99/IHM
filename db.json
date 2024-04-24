@@ -13,20 +13,8 @@
       "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
       "username": "maamoun",
       "categoryId": "6670",
-      "categoryName": ""
-    },
-    {
-      "id": "6094",
-      "title": "plombier",
-      "content": "call me  if u need anything about that ",
-      "imageUrl": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713141755/rlkjml2xsk4lc0w5xftk.jpg"
-      ],
-      "price": 35,
-      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
-      "username": "maamoun",
-      "categoryId": "2258",
-      "categoryName": ""
+      "categoryName": "",
+      "localisation": "Sousse"
     },
     {
       "id": "9343",
@@ -81,6 +69,105 @@
       "username": "maamoun",
       "categoryId": "3539",
       "categoryName": ""
+    },
+    {
+      "id": "4361",
+      "title": "opticien",
+      "content": "10 days experience",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713476015/lhn57xypwctk6ljco1vv.png"
+      ],
+      "price": 20,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "5195",
+      "categoryName": ""
+    },
+    {
+      "id": "5026",
+      "title": "test",
+      "content": "test",
+      "imageUrl": [
+        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713707645/b7awyagsorlfgnbqclys.jpg"
+      ],
+      "price": 15,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "1011",
+      "categoryName": "",
+      "localisation": "Paris"
+    },
+    {
+      "id": "1226",
+      "title": "zs",
+      "content": "ze",
+      "imageUrl": [],
+      "price": 30,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "2258",
+      "categoryName": "",
+      "localisation": "London"
+    },
+    {
+      "id": "2558",
+      "title": "tr",
+      "content": "tr",
+      "imageUrl": [],
+      "price": 3,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "6670",
+      "categoryName": "",
+      "localisation": "London"
+    },
+    {
+      "id": "6395",
+      "title": "jj",
+      "content": "jj",
+      "imageUrl": [],
+      "price": 5,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "2230",
+      "categoryName": "",
+      "localisation": "New York"
+    },
+    {
+      "id": "6309",
+      "title": "test",
+      "content": "test",
+      "imageUrl": [],
+      "price": 1,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "5195",
+      "categoryName": "",
+      "localisation": "New York"
+    },
+    {
+      "id": 8029,
+      "title": "totoa",
+      "content": "ooo",
+      "imageUrl": [],
+      "price": 0,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "",
+      "categoryName": "",
+      "localisation": ""
+    },
+    {
+      "id": "7773",
+      "title": "rerer",
+      "content": "",
+      "imageUrl": [],
+      "price": 0,
+      "userId": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
+      "username": "maamoun",
+      "categoryId": "",
+      "categoryName": "",
+      "localisation": ""
     }
   ],
   "users": [
@@ -103,10 +190,7 @@
       "password": "123",
       "role": "prestateur",
       "phone": "26720354",
-      "status": true,
-      "img": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713474429/p2lmuysslw7lifu0gic2.png"
-      ]
+      "status": true
     },
     {
       "id": "d453c8c0-60e6-4353-bd7a-62f154654d70",
@@ -115,7 +199,8 @@
       "password": "123",
       "role": "client",
       "phone": "99264030",
-      "status": true
+      "status": false,
+      "gender": "homme"
     },
     {
       "id": "edbf09eb-0c6a-4d6a-a6d0-ec6df246a261",
@@ -138,19 +223,6 @@
       "role": "client",
       "phone": "22000333",
       "status": true
-    },
-    {
-      "id": "e435352d-7967-4db7-98d9-0294985855f9",
-      "username": "emna_habibi",
-      "email": "jawhar.chaaben99@gmail.com",
-      "password": "123",
-      "role": "client",
-      "phone": "94703238",
-      "status": true,
-      "img": [
-        "https://res.cloudinary.com/dexzirjuk/image/upload/v1713474084/b1utskzetd3r7mfngjdu.png"
-      ],
-      "gender": "mezyena"
     }
   ],
   "category": [
@@ -204,16 +276,6 @@
       "time": "23:59",
       "timeEnd": "01:00",
       "message": "urgent pls call me 99264030",
-      "acceptation": ""
-    },
-    {
-      "id": "041a",
-      "clientId": "emna_habibi",
-      "username": "iheb",
-      "date": "2024-01-01",
-      "time": "04:00",
-      "timeEnd": "01:00",
-      "message": "gg",
       "acceptation": ""
     }
   ],

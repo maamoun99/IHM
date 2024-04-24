@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PostListComponent } from '../post-list/post-list.component';
-import { Router } from '@angular/router'; // Import Router
+import { NavigationExtras, Router } from '@angular/router'; // Import Router
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { Category } from 'src/model/category.model';
 
@@ -11,6 +11,7 @@ import { Category } from 'src/model/category.model';
 })
 export class DashboardComponent {
   searchKeyword: string = ''; // Define the searchKeyword property
+  locationKeyword: string = ''; 
   Categories: string[] = [
     'Accounting / Finance',
     'Automotive Jobs',
@@ -31,8 +32,16 @@ export class DashboardComponent {
     // );
   }
 
-  searchPosts(keyword: string): void {
-    this.router.navigate(['/posts'], { queryParams: { searchQuery: keyword } });
+  searchPosts(keyword: string,location:string): void {
+    const var1 = keyword; // First variable
+    const var2 = location; // Second variable
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        param1: var1, // Pass the first variable as a query parameter
+        param2: var2 // Pass the second variable as a query parameter
+      }
+    };
+    this.router.navigate(['/posts'],navigationExtras);
     // You can optionally trigger any additional logic here, such as fetching posts
   }
   getIconClass(category: string): string {

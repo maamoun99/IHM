@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { v4 as uuidv4 } from 'uuid'; // Import the uuidv4 function
+import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../services/registration.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,6 +15,7 @@ export class RegistrationComponent {
   password = '';
   role = 'client';
   phone = '';
+  gender = ''; // Add gender property
   errorMessage = '';
   img: any[] = []; // Initialize as an empty array
 
@@ -25,23 +26,20 @@ export class RegistrationComponent {
   ) { }
 
   register(): void {
-    const userId = uuidv4(); // Generate a random UUID for the user
+    const userId = uuidv4();
     this.registrationService.register({
-      id: userId, // Assign the generated UUID as the user's ID
+      id: userId,
       username: this.username,
       email: this.email,
       password: this.password,
       role: this.role,
       phone: this.phone,
-      status: true,
-      img: this.img // Assign the captured image to the user's image property
+      status: true
     }).subscribe(
       () => {
-        // Redirect to login page after successful registration
         this.router.navigate(['/login']);
       },
       error => {
-        // Display error message if registration fails
         this.errorMessage = 'Registration failed. Please try again.';
       }
     );

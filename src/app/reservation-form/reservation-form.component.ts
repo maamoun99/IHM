@@ -5,6 +5,7 @@ import { ReservationService } from '../services/reservation.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { OrderService } from '../services/order.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-reservation-form',
@@ -15,7 +16,9 @@ export class ReservationFormComponent implements OnInit {
   reservationForm!: FormGroup;
   clientId: string = '';
   currentDate: string = '';
+  postUsername: string = '';
   errorMessage: string = '';
+  postSubject: string = '';
   selectedPost: any = {}; // Initialize selectedPost with an empty object
 
   constructor(
@@ -28,6 +31,15 @@ export class ReservationFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // this.activatedRoute.paramMap.subscribe(params => {
+    //   // Retrieve the parameter value from the paramMap
+    //   this.postUsername = params.get('id') as string; 
+    // });
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.postUsername = params['param1'];
+      this.postSubject = params['param2'];
+    });
+    console.log(this.postSubject, this.postUsername)
     this.authService.getUsername().subscribe(username => {
       this.clientId = username;
       this.initForm(username);
@@ -39,7 +51,8 @@ export class ReservationFormComponent implements OnInit {
   initForm(username: string): void {
     this.reservationForm = this.formBuilder.group({
       clientId: [username, Validators.required],
-      username: [this.selectedPost.username, Validators.required],
+      username: [this.postUsername, Validators.required],
+      subject: [this.postSubject],
       date: [this.currentDate, Validators.required],
       time: ['', Validators.required],
       timeEnd: ['', Validators.required],

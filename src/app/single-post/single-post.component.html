@@ -14,11 +14,9 @@
                             <button
                                 *ngIf="(userRole$ | async) === 'client' || (userRole$ | async) === 'prestateur' || (userRole$ | async) === 'admin'"
                                 class="btn btn-outline-primary round-button mx-2" type="button"
-                                [routerLink]="'/reservation'">Apply</button>
-                            <button
-                                *ngIf="(userRole$ | async) !== 'client' && (userRole$ | async) !== 'prestateur' && (userRole$ | async) !== 'admin'"
-                                class="btn btn-primary round-button" type="button" [routerLink]="'/login'">Login To
-                                Apply</button>
+                                (click)="navigateToTargetWithParameter()">Apply</button>
+                            <button *ngIf="(userRole$ | async) !== 'client' && (userRole$ | async) !== 'prestateur' && (userRole$ | async) !== 'admin'" class="btn btn-primary round-button"
+                                type="button" (click)="navigateToLogin()">Login To Apply</button>
                         </div>
                         <hr>
                         <div class="mt-4">

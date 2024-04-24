@@ -14,12 +14,10 @@
                 <div class="profile-image-container">
                     <img class="profile-image" height="200" [src]="currentUser.img[0]" alt="Profile Image">
                 </div>
-                <button class="edit-profile-button" (click)="openEditProfileDialog()"> <i class="fas fa-edit"></i>
-                </button>
+                <button class="edit-profile-button" (click)="openEditProfileDialog()"> <i class="fas fa-edit"></i> </button>
             </div>
         </div>
     </div>
-
 
     <!-- Posts Section -->
     <div class="user-posts-box">
@@ -31,24 +29,20 @@
                         <div class="post-details">
                             <h4>{{ post.title }}</h4>
                             <p>{{ post.content }}</p>
-                            <img *ngIf="post.imageUrl.length > 0" [src]="post.imageUrl[0]" alt="Post Image"
-                                class="post-image">
+                            <img *ngIf="post.imageUrl.length > 0" [src]="post.imageUrl[0]" alt="Post Image" class="post-image">
                             <!-- Add more details of the post as needed -->
                         </div>
                         <div class="post-actions">
                             <button class="edit-button" (click)="modifyPost(post)">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="delete-button">
+                            <button class="delete-button" (click)="delete(post.id)">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </div>
-
                     </div>
                 </ng-container>
             </div>
         </div>
     </div>
-
-    <!-- Edit Profile Button -->
 </div>

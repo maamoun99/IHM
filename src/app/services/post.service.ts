@@ -8,25 +8,27 @@ import { Users } from 'src/model/user.model'; // Assuming you have a User interf
   providedIn: 'root'
 })
 export class PostService {
+  
   private apiUrl = 'http://localhost:3000/posts';
   private url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl).pipe(
-      switchMap(posts => {
-        const userRequests: Observable<Users>[] = posts.map(post => this.getUserById(post.userId));
-        return forkJoin(userRequests).pipe(
-          map(users => {
-            for (let i = 0; i < posts.length; i++) {
-              posts[i].username = users[i].username; // Update to use 'username' property
-            }
-            return posts;
-          })
-        );
-      })
-    );
+    return this.http.get<Post[]>('http://localhost:3000/posts')
+    // .pipe(
+    //   switchMap(posts => {
+    //     const userRequests: Observable<Users>[] = posts.map(post => this.getUserById(post.userId));
+    //     return forkJoin(userRequests).pipe(
+    //       map(users => {
+    //         for (let i = 0; i < posts.length; i++) {
+    //           posts[i].username = users[i].username; // Update to use 'username' property
+    //         }
+    //         return posts;
+    //       })
+    //     );
+    //   })
+    // );
   }
 
   filterPostsByUser(posts: Post[], username: string): Observable<Post[]> {
@@ -47,8 +49,8 @@ export class PostService {
     );
   }
 
-  createPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(this.apiUrl, post);
+  createPost(post: any): Observable<void> {
+    return this.http.post<void>(this.apiUrl, post);
   }
 
   updatePost(post: Post): Observable<Post> {
@@ -56,10 +58,17 @@ export class PostService {
     return this.http.put<Post>(url, post);
   }
 
-  deletePost(postId: number): Observable<any> {
-    const url = `${this.apiUrl}/${postId}`;
-    return this.http.delete(url, { observe: 'response' });
+  deletePost(postId: number): Observable<void> {
+
+    this.getPosts().subscribe(posts => {
+      var aa = posts;
+    });
+    var id : string;
+    id= postId.toString()
+    return this.http.delete<void>(`http://localhost:3000/posts/${id}`);
+
   }
+
 
   getPostById(id: number): Observable<Post> {
     const url = `${this.apiUrl}/${id}`;

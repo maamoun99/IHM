@@ -9,8 +9,8 @@
         <h2>Find Services</h2>
         <input type="text" class="ico-01" [(ngModel)]="searchKeyword"
           placeholder="job title, keywords or company name" />
-        <input type="text" class="ico-02" placeholder="city, province or region" />
-        <button (click)="searchPosts(searchKeyword)"><i class="fa fa-search"></i></button>
+        <input type="text" class="ico-02" [(ngModel)]="locationKeyword" placeholder="city, province or region" />
+        <button (click)="searchPosts(searchKeyword,locationKeyword)"><i class="fa fa-search"></i></button>
         <!-- Announce -->
         <div class="announce">
           We have over <strong>15,000</strong> job offers for you!
@@ -29,7 +29,7 @@
         <div class="col-md-3" *ngFor="let category of Categories">
           <div class="card mb-3">
             <div class="card-body">
-              <a (click)="searchPosts(category)">
+              <a (click)="searchPosts(category,locationKeyword)">
                 <i [class]="getIconClass(category)"></i> {{ category }}
               </a>
             </div>
